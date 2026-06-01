@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Droit en France - Édition Finistère</title>
+    
+    <!-- Chargement de Tailwind CSS pour le design sans installation -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration de nos couleurs personnalisées -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'france-bleu': '#002395',
+                        'france-rouge': '#ED2939',
+                        'bcg-gris': '#F8F9FA',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased">
+    
+    <!-- Barre de Navigation -->
+    <nav class="w-full p-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+        <div class="text-2xl font-black text-france-bleu tracking-tight">
+            Mon Droit en France.
+        </div>
+        <div class="text-sm font-semibold text-france-bleu bg-blue-50 px-4 py-2 rounded-full border border-blue-100 shadow-sm">
+            📍 Édition Finistère
+        </div>
+    </nav>
+
+    <!-- Section Héro (Introduction) -->
+    <section class="px-6 py-20 mx-auto max-w-7xl md:py-28">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl font-extrabold tracking-tight text-france-bleu md:text-6xl leading-tight">
+                Comprenez vos droits. <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-france-bleu to-blue-400">
+                    Prenez les bonnes décisions.
+                </span>
+            </h1>
+            
+            <p class="mt-8 text-xl text-gray-600 leading-relaxed">
+                Informez-vous sur les procédures face à la préfecture et trouvez l'avocat spécialisé qu'il vous faut pour vous défendre dans votre région.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                <a href="#fiches" class="px-8 py-4 text-center text-white font-bold bg-france-rouge rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
+                    Identifier mon problème
+                </a>
+                <a href="#avocats" class="px-8 py-4 text-center text-france-bleu font-bold bg-white border-2 border-gray-200 rounded-lg hover:border-france-bleu transition-all">
+                    Trouver un avocat
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Fiches Pratiques (L'entonnoir d'information) -->
+    <section id="fiches" class="bg-bcg-gris py-20 border-t border-gray-100">
+        <div class="px-6 mx-auto max-w-7xl">
+            <h2 class="text-3xl font-bold text-france-bleu mb-12">Votre situation juridique</h2>
+            
+            <!-- Grille des cartes -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Carte 1 : OQTF -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group">
+                    <div class="w-12 h-12 bg-red-50 text-france-rouge rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-rouge group-hover:text-white transition-colors">
+                        !
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">OQTF</h3>
+                    <p class="text-gray-600 mb-4">Obligation de Quitter le Territoire Français. Les délais de recours sont extrêmement courts (48h à 30 jours).</p>
+                    <span class="text-france-bleu font-semibold text-sm flex items-center">
+                        Comprendre les délais →
+                    </span>
+                </div>
+
+                <!-- Carte 2 : Refus de séjour -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
+                        📄
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Refus de Titre de Séjour</h3>
+                    <p class="text-gray-600 mb-4">La préfecture a refusé votre demande ou votre renouvellement. Découvrez les recours possibles.</p>
+                    <span class="text-france-bleu font-semibold text-sm flex items-center">
+                        Voir les recours →
+                    </span>
+                </div>
+
+                <!-- Carte 3 : Demande d'Asile -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
+                        🛡️
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Demande d'Asile</h3>
+                    <p class="text-gray-600 mb-4">Rejet de l'OFPRA ou convocation à la CNDA. Préparez votre audience et renforcez votre dossier.</p>
+                    <span class="text-france-bleu font-semibold text-sm flex items-center">
+                        Préparer l'audience →
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
