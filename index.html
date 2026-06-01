@@ -25,10 +25,10 @@
         }
     </script>
 </head>
-<!-- Le nouveau dégradé calibré : 35% d'opacité sur les bords, 100% blanc au centre -->
+<!-- Dégradé calibré -->
 <body class="text-gray-800 font-sans antialiased min-h-screen" style="background: linear-gradient(135deg, rgba(0, 35, 149, 0.35) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(237, 41, 57, 0.35) 100%); background-attachment: fixed;">
     
-    <!-- Barre de Navigation avec Sélecteur de Langue -->
+    <!-- Barre de Navigation -->
     <nav class="w-full p-6 border-b border-gray-100 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="text-2xl font-black text-france-bleu tracking-tight">
             Mon Droit en France.
@@ -54,11 +54,9 @@
                     Prenez les bonnes décisions.
                 </span>
             </h1>
-            
             <p id="heroDesc" class="mt-8 text-xl text-gray-700 leading-relaxed font-medium">
                 Informez-vous sur les procédures face à la préfecture et trouvez l'avocat spécialisé qu'il vous faut pour vous défendre dans votre région.
             </p>
-            
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
                 <a href="#fiches" class="px-8 py-4 text-center text-white font-bold bg-france-rouge rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
                     Identifier mon problème
@@ -74,7 +72,6 @@
     <section id="fiches" class="py-20 border-t border-gray-200/50">
         <div class="px-6 mx-auto max-w-7xl">
             <h2 class="text-3xl font-bold text-france-bleu mb-12">Votre situation juridique</h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Carte OQTF -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group">
@@ -83,7 +80,6 @@
                     <p class="text-gray-600 mb-4">Obligation de Quitter le Territoire Français. Délais extrêmement courts (48h à 30 jours).</p>
                     <a href="oqtf.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">Comprendre les délais →</a>
                 </div>
-
                 <!-- Carte Refus de séjour -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group">
                     <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">📄</div>
@@ -91,7 +87,6 @@
                     <p class="text-gray-600 mb-4">La préfecture a refusé votre demande. Découvrez les recours possibles.</p>
                     <a href="sejour.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">Voir les recours →</a>
                 </div>
-
                 <!-- Carte Asile -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group">
                     <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">🛡️</div>
@@ -134,15 +129,82 @@
         </div>
     </section>
 
+    <!-- NOUVELLE SECTION : Actualités Juridiques -->
+    <section id="actualites" class="py-20 border-t border-gray-200/50 bg-white/40 backdrop-blur-sm">
+        <div class="px-6 mx-auto max-w-7xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-france-bleu mb-4">Actualités Juridiques</h2>
+                    <p class="text-gray-700 text-lg">Restez informé des dernières évolutions du droit des étrangers en France et dans le Finistère.</p>
+                </div>
+                <a href="#" class="hidden md:block text-france-bleu font-bold hover:underline mb-1">Voir tous les articles →</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Article 1 -->
+                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden">
+                        <!-- Image d'illustration libre de droits (Unsplash) -->
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800" alt="Loi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-blue-50 text-france-bleu text-xs font-bold px-2 py-1 rounded border border-blue-100">Préfecture</span>
+                            <span class="text-xs text-gray-500 font-semibold">28 Mai 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 leading-tight">Généralisation des démarches en ligne (ANEF)</h3>
+                        <p class="text-gray-600 mb-6 text-sm flex-grow">La préfecture du Finistère annonce la bascule définitive des demandes de titres de séjour "vie privée et familiale" sur la plateforme numérique nationale.</p>
+                        <span class="text-france-bleu font-semibold text-sm flex items-center hover:underline mt-auto">Lire l'article →</span>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1505664177922-9818f1baa7dc?auto=format&fit=crop&q=80&w=800" alt="Tribunal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-red-50 text-france-rouge text-xs font-bold px-2 py-1 rounded border border-red-100">Législation</span>
+                            <span class="text-xs text-gray-500 font-semibold">15 Mai 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 leading-tight">Nouveaux délais de jugement au Tribunal</h3>
+                        <p class="text-gray-600 mb-6 text-sm flex-grow">Suite à la récente réforme du CESEDA, les délais d'audiencement pour les contentieux liés aux OQTF sans délai ont été modifiés. Ce qu'il faut savoir pour se préparer.</p>
+                        <span class="text-france-bleu font-semibold text-sm flex items-center hover:underline mt-auto">Lire l'article →</span>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" alt="Travail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-green-50 text-green-700 text-xs font-bold px-2 py-1 rounded border border-green-200">Travail</span>
+                            <span class="text-xs text-gray-500 font-semibold">2 Mai 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 leading-tight">Régularisation : liste des métiers en tension à jour</h3>
+                        <p class="text-gray-600 mb-6 text-sm flex-grow">La préfecture de Bretagne a mis à jour la liste régionale des "métiers en tension", ouvrant de nouvelles opportunités d'admission exceptionnelle au séjour par le travail.</p>
+                        <span class="text-france-bleu font-semibold text-sm flex items-center hover:underline mt-auto">Lire l'article →</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Section Annuaire & Carte -->
     <section id="avocats" class="py-20 border-t border-gray-200/50">
         <div class="px-6 mx-auto max-w-7xl">
             <h2 class="text-3xl font-bold text-france-bleu mb-8">Les avocats du Finistère (29)</h2>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Colonne Liste Avocats -->
-                <div class="space-y-6">
-                    <!-- Profil Maître Buors -->
+                <!-- Colonne Liste Avocats (Scrollable) -->
+                <div class="space-y-6 h-auto lg:max-h-[700px] lg:overflow-y-auto pr-2">
+                    
+                    <!-- Avocat 1 : Maître Buors -->
                     <div class="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between shadow-md">
                         <div>
                             <div class="flex items-center gap-4 mb-4">
@@ -154,39 +216,76 @@
                             </div>
                             <p class="text-sm text-gray-700 mb-4">Intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour).</p>
                         </div>
-                        <button onclick="ouvrirModale('Maître Buors', 'contact@avocat-buors.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-md">
+                        <button onclick="ouvrirModale('Maître Buors', 'contact@avocat-buors.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-sm">
                             Contacter le cabinet
                         </button>
                     </div>
 
-                    <!-- Profil Partenaire Brest -->
-                    <div class="bg-white/80 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between opacity-80">
+                    <!-- Avocat 2 : Maître Le Gall -->
+                    <div class="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between shadow-md">
                         <div>
                             <div class="flex items-center gap-4 mb-4">
-                                <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-400">👤</div>
+                                <img src="https://ui-avatars.com/api/?name=Maître+Le+Gall&background=ED2939&color=fff&size=150" alt="Maître Le Gall" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
                                 <div>
-                                    <h3 class="font-bold text-lg text-gray-900">Avocat Partenaire</h3>
+                                    <h3 class="font-bold text-lg text-gray-900">Maître Le Gall</h3>
                                     <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Brest</p>
                                 </div>
                             </div>
-                            <p class="text-sm text-gray-700 mb-4">Cabinet en cours de référencement sur la plateforme.</p>
+                            <p class="text-sm text-gray-700 mb-4">Spécialiste des contentieux administratifs et régularisations par le travail.</p>
                         </div>
+                        <button onclick="ouvrirModale('Maître Le Gall', 'contact@legall-avocats.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-sm">
+                            Contacter le cabinet
+                        </button>
                     </div>
+
+                    <!-- Avocat 3 : Maître Kermarrec -->
+                    <div class="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between shadow-md">
+                        <div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="https://ui-avatars.com/api/?name=Maître+Kermarrec&background=000&color=fff&size=150" alt="Maître Kermarrec" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900">Maître Kermarrec</h3>
+                                    <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Quimper</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-700 mb-4">Défense en urgence (CRA, OQTF sans délai) et recours CNDA.</p>
+                        </div>
+                        <button onclick="ouvrirModale('Maître Kermarrec', 'cabinet@kermarrec-droit.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-sm">
+                            Contacter le cabinet
+                        </button>
+                    </div>
+
+                    <!-- Avocat 4 : Maître Tanguy -->
+                    <div class="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between shadow-md">
+                        <div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="https://ui-avatars.com/api/?name=Maître+Tanguy&background=002395&color=fff&size=150" alt="Maître Tanguy" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-900">Maître Tanguy</h3>
+                                    <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Brest</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-700 mb-4">Accompagnement regroupement familial et visas de long séjour.</p>
+                        </div>
+                        <button onclick="ouvrirModale('Maître Tanguy', 'contact@tanguy-avocat.bzh')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-sm">
+                            Contacter le cabinet
+                        </button>
+                    </div>
+
                 </div>
 
                 <!-- Colonne Carte Interactive -->
-                <div class="bg-white/90 p-2 rounded-xl shadow-lg border border-gray-200 h-[500px] z-0">
+                <div class="bg-white/90 p-2 rounded-xl shadow-lg border border-gray-200 h-[400px] lg:h-[700px] z-0">
                     <div id="map" class="w-full h-full rounded-lg z-0"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modale de Contact (Cachée par défaut) -->
+    <!-- Modale de Contact -->
     <div id="contactModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-[100] p-4">
         <div class="bg-white rounded-2xl w-full max-w-lg p-8 relative shadow-2xl">
             <button onclick="fermerModale()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 font-bold text-2xl">&times;</button>
-            
             <h3 class="text-2xl font-bold text-france-bleu mb-2">Demande de contact</h3>
             <p class="text-gray-600 text-sm mb-6">Pré-qualifiez votre dossier pour <span id="nomAvocat" class="font-bold text-gray-900"></span>.</p>
             
@@ -214,11 +313,15 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // --- CARTE ---
-        var map = L.map('map').setView([48.1903, -4.0860], 8);
+        // --- CARTE : On centre entre Brest et Quimper ---
+        var map = L.map('map').setView([48.1903, -4.2860], 8);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
-        L.marker([47.9975, -4.0978]).addTo(map).bindPopup('<b>Maître Buors</b><br>Barreau de Quimper');
-        L.marker([48.3903, -4.4860]).addTo(map).bindPopup('<b>Avocat Partenaire</b><br>Barreau de Brest');
+        
+        // Ajout des 4 marqueurs géographiques
+        L.marker([47.9975, -4.0978]).addTo(map).bindPopup('<b>Maître Buors</b><br>Quimper');
+        L.marker([47.9920, -4.1050]).addTo(map).bindPopup('<b>Maître Kermarrec</b><br>Quimper');
+        L.marker([48.3903, -4.4860]).addTo(map).bindPopup('<b>Maître Le Gall</b><br>Brest');
+        L.marker([48.3950, -4.4900]).addTo(map).bindPopup('<b>Maître Tanguy</b><br>Brest');
 
         // --- MODALE ---
         let emailAvocatActuel = "";
