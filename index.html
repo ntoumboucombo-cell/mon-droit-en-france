@@ -8,56 +8,42 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Leaflet CSS pour la carte interactive -->
+    <!-- Leaflet CSS & JS (Placés dans le head pour être sûr du chargement) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
-    <!-- Librairie jsPDF pour générer le PDF de la lettre -->
+    <!-- Librairie jsPDF pour générer le PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <script>
         tailwind.config = {
             theme: {
-                extend: {
-                    colors: {
-                        'france-bleu': '#002395',
-                        'france-rouge': '#ED2939',
-                        'bcg-gris': '#F8F9FA',
-                    }
-                }
+                extend: { colors: { 'france-bleu': '#002395', 'france-rouge': '#ED2939', 'bcg-gris': '#F8F9FA' } }
             }
         }
     </script>
 </head>
 <body class="text-gray-800 font-sans antialiased min-h-screen" style="background: linear-gradient(135deg, rgba(0, 35, 149, 0.35) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(237, 41, 57, 0.35) 100%); background-attachment: fixed;">
     
-    <!-- Barre de Navigation avec LOGO et Sélecteur de Langue Personnalisé -->
+    <!-- Barre de Navigation avec LOGO et Drapeaux -->
     <nav class="w-full p-6 border-b border-gray-100 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="flex items-center gap-3">
-            <svg class="w-8 h-8 text-france-rouge" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
-            </svg>
-            <div class="text-2xl font-black text-france-bleu tracking-tight">
-                Mon Droit en France.
-            </div>
+            <svg class="w-8 h-8 text-france-rouge" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+            <div class="text-2xl font-black text-france-bleu tracking-tight">Mon Droit en France.</div>
         </div>
         <div class="flex items-center gap-4 relative">
-            <!-- Sélecteur de langue avec vrais drapeaux -->
             <div class="relative">
                 <button onclick="toggleLangMenu()" class="flex items-center gap-2 text-sm border border-gray-200 rounded-md px-3 py-2 bg-white hover:bg-gray-50 shadow-sm transition-all font-bold">
                     <span id="currentFlag">🇫🇷</span> <span id="currentLangText">FR</span>
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <!-- Menu déroulant caché -->
                 <div id="langMenu" class="hidden absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden z-50">
                     <button onclick="changerLangue('fr', '🇫🇷', 'FR')" class="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm font-bold"><span class="text-lg">🇫🇷</span> Français</button>
                     <button onclick="changerLangue('en', '🇬🇧', 'EN')" class="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm font-bold"><span class="text-lg">🇬🇧</span> English</button>
                     <button onclick="changerLangue('ar', '🇸🇦', 'AR')" class="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-sm font-bold"><span class="text-lg">🇸🇦</span> العربية</button>
                 </div>
             </div>
-            
-            <div class="hidden md:block text-sm font-semibold text-france-bleu bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100 shadow-sm">
-                📍 Édition Finistère
-            </div>
+            <div class="hidden md:block text-sm font-semibold text-france-bleu bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100 shadow-sm">📍 Édition Finistère</div>
         </div>
     </nav>
 
@@ -66,20 +52,14 @@
         <div class="max-w-3xl">
             <h1 id="heroTitle" class="text-5xl font-extrabold tracking-tight text-france-bleu md:text-6xl leading-tight">
                 Comprenez vos droits. <br />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-france-bleu to-blue-400">
-                    Prenez les bonnes décisions.
-                </span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-france-bleu to-blue-400">Prenez les bonnes décisions.</span>
             </h1>
             <p id="heroDesc" class="mt-8 text-xl text-gray-700 leading-relaxed font-medium">
                 Informez-vous sur les procédures face à la préfecture et trouvez l'avocat spécialisé qu'il vous faut pour vous défendre dans votre région.
             </p>
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
-                <a href="#fiches" class="px-8 py-4 text-center text-white font-bold bg-france-rouge rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
-                    Identifier mon problème
-                </a>
-                <a href="#avocats" class="px-8 py-4 text-center text-france-bleu font-bold bg-white border-2 border-gray-200 rounded-lg hover:border-france-bleu transition-all shadow-sm">
-                    Trouver un avocat
-                </a>
+                <a href="#fiches" class="px-8 py-4 text-center text-white font-bold bg-france-rouge rounded-lg hover:bg-red-700 shadow-lg hover:shadow-xl">Identifier mon problème</a>
+                <a href="#avocats" class="px-8 py-4 text-center text-france-bleu font-bold bg-white border-2 border-gray-200 rounded-lg hover:border-france-bleu shadow-sm">Trouver un avocat</a>
             </div>
         </div>
     </section>
@@ -90,40 +70,33 @@
             <h2 class="text-3xl font-bold text-france-bleu mb-12">Votre situation juridique</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <!-- Carte OQTF -->
+                <!-- OQTF -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group flex flex-col">
-                    <div class="w-14 h-14 bg-red-50 text-france-rouge rounded-xl flex items-center justify-center mb-6 group-hover:bg-france-rouge group-hover:text-white transition-colors">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">OQTF</h3>
-                    <p class="text-gray-600 mb-4 flex-grow">Obligation de Quitter le Territoire Français. Délais extrêmement courts (48h à 30 jours).</p>
-                    <a href="oqtf.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">Comprendre les délais →</a>
+                    <div class="w-14 h-14 bg-red-50 text-france-rouge rounded-xl flex items-center justify-center mb-6"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-3">OQTF</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">Obligation de Quitter le Territoire Français. Délais extrêmement courts.</p>
+                    <a href="oqtf.html" class="text-france-bleu font-semibold text-sm hover:underline">Comprendre les délais →</a>
                 </div>
                 
-                <!-- Carte Refus de séjour + Générateur PDF -->
+                <!-- Refus de séjour + NOUVEAU PDF -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group flex flex-col border-t-4 border-t-france-bleu">
-                    <div class="w-14 h-14 bg-blue-50 text-france-bleu rounded-xl flex items-center justify-center mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">Refus de Titre de Séjour</h3>
-                    <p class="text-gray-600 mb-4 flex-grow">La préfecture a refusé votre demande. Découvrez les recours possibles.</p>
-                    <a href="sejour.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline mb-4">Voir les recours →</a>
-                    <button onclick="ouvrirModalePDF()" class="w-full py-2 bg-gray-50 text-france-bleu font-bold rounded border border-gray-200 hover:bg-white hover:border-france-bleu transition-all text-sm flex justify-center items-center gap-2">
+                    <div class="w-14 h-14 bg-blue-50 text-france-bleu rounded-xl flex items-center justify-center mb-6"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-3">Refus de Titre de Séjour</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">La préfecture a refusé votre demande. Découvrez les recours.</p>
+                    <a href="sejour.html" class="text-france-bleu font-semibold text-sm hover:underline mb-4">Voir les recours →</a>
+                    <button onclick="ouvrirModalePDF()" class="w-full py-2 bg-blue-50 text-france-bleu font-bold rounded border border-blue-200 hover:bg-france-bleu hover:text-white transition-all text-sm flex justify-center items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        Générer Lettre de Recours
+                        Créer une lettre de recours
                     </button>
                 </div>
                 
-                <!-- Carte Asile -->
+                <!-- Asile -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group flex flex-col">
-                    <div class="w-14 h-14 bg-green-50 text-green-700 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-700 group-hover:text-white transition-colors">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">Demande d'Asile</h3>
+                    <div class="w-14 h-14 bg-green-50 text-green-700 rounded-xl flex items-center justify-center mb-6"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-3">Demande d'Asile</h3>
                     <p class="text-gray-600 mb-4 flex-grow">Rejet de l'OFPRA ou convocation à la CNDA. Préparez votre audience.</p>
-                    <a href="asile.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">Préparer l'audience →</a>
+                    <a href="asile.html" class="text-france-bleu font-semibold text-sm hover:underline">Préparer l'audience →</a>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -213,44 +186,32 @@
         <div class="px-6 mx-auto max-w-7xl">
             <h2 class="text-3xl font-bold text-france-bleu mb-8">Les avocats du Finistère (29)</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Colonne Liste Avocats -->
-                <div class="space-y-6 h-auto lg:max-h-[700px] lg:overflow-y-auto pr-2">
-                    <!-- Maître Buors -->
-                    <div class="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between shadow-md">
-                        <div>
-                            <div class="flex items-center gap-4 mb-4">
-                                <img src="https://ui-avatars.com/api/?name=Maître+Buors&background=002395&color=fff&size=150" alt="Maître Buors" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-900">Maître Buors</h3>
-                                    <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Quimper</p>
-                                </div>
+                <!-- Liste Avocats -->
+                <div class="space-y-6 h-auto lg:max-h-[600px] lg:overflow-y-auto pr-2">
+                    <div class="bg-white/95 border border-gray-200 p-6 rounded-xl shadow-md">
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="https://ui-avatars.com/api/?name=Maître+Buors&background=002395&color=fff&size=150" alt="Maître Buors" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900">Maître Buors</h3>
+                                <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Quimper</p>
                             </div>
-                            <p class="text-sm text-gray-700 mb-4">Intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour).</p>
                         </div>
-                        <button onclick="ouvrirModale('Maître Buors', 'contact@avocat-buors.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-sm">
-                            Contacter le cabinet
-                        </button>
+                        <button onclick="ouvrirModaleContact('Maître Buors', 'contact@avocat-buors.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg shadow-sm">Contacter le cabinet</button>
                     </div>
-                    <!-- (Les autres avocats sont volontairement masqués ici pour raccourcir l'affichage, tu peux réinsérer Le Gall, Tanguy, etc.) -->
-                     <div class="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between shadow-md">
-                        <div>
-                            <div class="flex items-center gap-4 mb-4">
-                                <img src="https://ui-avatars.com/api/?name=Maître+Le+Gall&background=ED2939&color=fff&size=150" alt="Maître Le Gall" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-900">Maître Le Gall</h3>
-                                    <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Brest</p>
-                                </div>
+                    <div class="bg-white/95 border border-gray-200 p-6 rounded-xl shadow-md">
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="https://ui-avatars.com/api/?name=Maître+Le+Gall&background=ED2939&color=fff&size=150" alt="Maître Le Gall" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900">Maître Le Gall</h3>
+                                <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Brest</p>
                             </div>
-                            <p class="text-sm text-gray-700 mb-4">Spécialiste des contentieux administratifs et régularisations par le travail.</p>
                         </div>
-                        <button onclick="ouvrirModale('Maître Le Gall', 'contact@legall-avocats.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-sm">
-                            Contacter le cabinet
-                        </button>
+                        <button onclick="ouvrirModaleContact('Maître Le Gall', 'contact@legall.fr')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg shadow-sm">Contacter le cabinet</button>
                     </div>
                 </div>
-                <!-- Carte -->
-                <div class="bg-white/90 p-2 rounded-xl shadow-lg border border-gray-200 h-[400px] lg:h-[700px] z-0">
-                    <div id="map" class="w-full h-full rounded-lg z-0"></div>
+                <!-- CARTE (Sécurisée) -->
+                <div class="bg-white p-2 rounded-xl shadow-lg border border-gray-200 h-[400px] lg:h-[600px] relative">
+                    <div id="map" class="w-full h-full rounded-lg z-[1]"></div>
                 </div>
             </div>
         </div>
@@ -261,6 +222,7 @@
         <div class="px-6 mx-auto max-w-7xl">
             <h2 class="text-3xl font-bold text-france-bleu mb-4">Actualités Juridiques</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                
                 <!-- Article 1 -->
                 <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
                     <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800" alt="Loi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
@@ -270,6 +232,7 @@
                         <p class="text-gray-600 mb-6 text-sm flex-grow">La préfecture bascule ses procédures sur la plateforme numérique.</p>
                     </div>
                 </div>
+                
                  <!-- Article 2 -->
                 <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
                     <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&q=80&w=800" alt="Loi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
@@ -279,150 +242,233 @@
                         <p class="text-gray-600 mb-6 text-sm flex-grow">Les délais d'audiencement ont été modifiés au Tribunal Administratif.</p>
                     </div>
                 </div>
+
+                <!-- Article 3 -->
+                <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" alt="Travail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-4"><span class="bg-green-50 text-green-700 text-xs font-bold px-2 py-1 rounded border border-green-200">Travail</span></div>
+                        <h3 class="text-xl font-bold mb-3">Régularisation par le travail</h3>
+                        <p class="text-gray-600 mb-6 text-sm flex-grow">Mise à jour de la liste des métiers en tension en Bretagne et nouvelles opportunités.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Modale de Contact Avocat -->
+    <!-- Modale de Contact Avocat Basique -->
     <div id="contactModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-[100] p-4">
         <div class="bg-white rounded-2xl w-full max-w-lg p-8 relative shadow-2xl">
             <button onclick="fermerModale('contactModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 font-bold text-2xl">&times;</button>
-            <h3 class="text-2xl font-bold text-france-bleu mb-2">Demande de contact</h3>
-            <p class="text-gray-600 text-sm mb-6">Pré-qualifiez votre dossier pour <span id="nomAvocat" class="font-bold text-gray-900"></span>.</p>
-            <div class="space-y-4">
-                <input type="tel" id="userPhone" placeholder="Votre téléphone (ex: 06...)" class="w-full p-3 border border-gray-300 rounded-lg">
-                <select id="userProblem" class="w-full p-3 border border-gray-300 rounded-lg">
-                    <option>OQTF reçue récemment</option>
-                    <option>Refus de titre de séjour</option>
-                </select>
-                <button onclick="envoyerDemande()" class="w-full mt-4 py-4 bg-france-rouge text-white font-bold rounded-lg hover:bg-red-700">Envoyer ma demande</button>
-            </div>
+            <h3 class="text-2xl font-bold text-france-bleu mb-2">Contacter <span id="nomAvocat"></span></h3>
+            <input type="tel" id="userPhone" placeholder="Votre téléphone" class="w-full p-3 border border-gray-300 rounded-lg mb-4 mt-4">
+            <button onclick="fermerModale('contactModal')" class="w-full py-3 bg-france-rouge text-white font-bold rounded-lg">Fermer</button>
         </div>
     </div>
 
     <!-- Modale Générateur PDF (Recours) -->
-    <div id="pdfModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-[100] p-4">
-        <div class="bg-white rounded-2xl w-full max-w-xl p-8 relative shadow-2xl max-h-screen overflow-y-auto">
-            <button onclick="fermerModale('pdfModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 font-bold text-2xl">&times;</button>
-            <h3 class="text-2xl font-bold text-france-bleu mb-2">Générer un Recours Gracieux</h3>
-            <p class="text-gray-600 text-sm mb-6 bg-blue-50 p-3 rounded-lg border border-blue-100">Cet outil génère un document PDF mis en forme, prêt à être imprimé et envoyé par La Poste (Lettre Recommandée) au Préfet.</p>
+    <div id="pdfModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-[100] p-4">
+        <div class="bg-white rounded-2xl w-full max-w-2xl p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="fermerModale('pdfModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 font-bold text-3xl">&times;</button>
+            <h3 class="text-2xl font-bold text-france-bleu mb-2">Créer ma lettre au Préfet</h3>
+            <p class="text-gray-600 text-sm mb-6 bg-blue-50 p-3 rounded-lg border border-blue-100">Cochez vos arguments et expliquez votre situation. L'outil mettra en forme une lettre officielle PDF prête à envoyer.</p>
             
-            <div class="space-y-4">
+            <div class="space-y-5">
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1">Prénom</label>
-                        <input type="text" id="pdfPrenom" placeholder="Jean" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
+                    <div><label class="block text-xs font-bold text-gray-700 mb-1">Prénom</label><input type="text" id="pdfPrenom" class="w-full p-2 border border-gray-300 rounded-lg"></div>
+                    <div><label class="block text-xs font-bold text-gray-700 mb-1">Nom</label><input type="text" id="pdfNom" class="w-full p-2 border border-gray-300 rounded-lg"></div>
+                </div>
+                <div><label class="block text-xs font-bold text-gray-700 mb-1">N° Étranger (AGDREF)</label><input type="text" id="pdfAgdref" class="w-full p-2 border border-gray-300 rounded-lg"></div>
+                <div><label class="block text-xs font-bold text-gray-700 mb-1">Date du refus</label><input type="date" id="pdfDateRefus" class="w-full p-2 border border-gray-300 rounded-lg"></div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-900 mb-2 border-b pb-1">1. Sélectionnez vos arguments (Plusieurs possibles) :</label>
+                    <div class="space-y-2 mt-2">
+                        <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded">
+                            <input type="checkbox" class="pdf-checkbox mt-1 w-4 h-4 text-france-bleu" value="Je suis parfaitement intégré(e) professionnellement en France, je dispose de revenus réguliers et/ou d'une promesse d'embauche solide.">
+                            <span class="text-sm text-gray-800"><strong>Travail :</strong> J'ai un emploi, un CDI, des fiches de paie...</span>
+                        </label>
+                        <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded">
+                            <input type="checkbox" class="pdf-checkbox mt-1 w-4 h-4 text-france-bleu" value="Mes attaches familiales en France sont anciennes et intenses. Le centre de mes intérêts privés se trouve sur le territoire français.">
+                            <span class="text-sm text-gray-800"><strong>Famille :</strong> Mon conjoint/mes enfants vivent en France.</span>
+                        </label>
+                        <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded">
+                            <input type="checkbox" class="pdf-checkbox mt-1 w-4 h-4 text-france-bleu" value="Mon état de santé nécessite une prise en charge médicale impérative qui ne peut être assurée dans mon pays d'origine.">
+                            <span class="text-sm text-gray-800"><strong>Santé :</strong> J'ai besoin de soins médicaux introuvables au pays.</span>
+                        </label>
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1">Nom</label>
-                        <input type="text" id="pdfNom" placeholder="Dupont" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
-                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Adresse complète</label>
-                    <input type="text" id="pdfAdresse" placeholder="10 rue de Brest, 29000 Quimper" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">N° Étranger (AGDREF - 10 chiffres)</label>
-                    <input type="text" id="pdfAgdref" placeholder="9999999999" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Date du refus de la préfecture</label>
-                    <input type="date" id="pdfDateRefus" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Argument principal à soulever</label>
-                    <select id="pdfArgument" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
-                        <option value="Ma situation professionnelle s'est stabilisée, je dispose désormais de revenus réguliers et d'une promesse d'embauche.">Intégration par le travail</option>
-                        <option value="Mes attaches familiales en France sont anciennes et intenses. Toute ma famille réside ici.">Vie privée et familiale</option>
-                        <option value="Mon état de santé nécessite une prise en charge médicale qui ne peut être assurée dans mon pays.">État de santé</option>
-                    </select>
+
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <label class="block text-sm font-bold text-gray-900 mb-2">2. Racontez votre situation avec vos propres mots :</label>
+                    <textarea id="pdfCustomText" rows="4" placeholder="Ex: je travaille en france depuis 4 ans dans la restauration et mon patron veut me garder..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-france-bleu focus:outline-none"></textarea>
+                    
+                    <button onclick="corrigerTexteIA()" id="btnIA" class="mt-3 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-lg text-sm flex items-center gap-2 hover:opacity-90 shadow-sm transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        ✨ Corriger les fautes (IA)
+                    </button>
+                    <p id="iaLoading" class="text-xs text-purple-600 font-bold mt-2 hidden animate-pulse">L'IA analyse et corrige votre texte...</p>
                 </div>
                 
-                <button onclick="genererPDF()" class="w-full mt-6 py-4 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all flex items-center justify-center gap-2 shadow-lg">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                <button onclick="genererPDF()" class="w-full py-4 bg-france-bleu text-white font-black rounded-lg hover:bg-blue-800 transition-all flex items-center justify-center gap-2 shadow-xl text-lg">
                     Télécharger ma Lettre (PDF)
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Le Chatbot IA (Interface) -->
+    <!-- Le Chatbot IA -->
     <div id="chatbotContainer" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        <!-- Fenêtre de chat (Cachée par défaut) -->
-        <div id="chatWindow" class="hidden w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 mb-4 overflow-hidden flex flex-col" style="height: 400px;">
-            <!-- Header du Chat -->
+        <div id="chatWindow" class="hidden w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 mb-4 overflow-hidden flex flex-col h-[400px]">
             <div class="bg-france-bleu p-4 flex justify-between items-center text-white">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-france-bleu font-bold">IA</div>
-                    <div>
-                        <h4 class="font-bold text-sm">Assistant Juridique</h4>
-                        <p class="text-xs text-blue-200">En ligne</p>
-                    </div>
+                    <div><h4 class="font-bold text-sm">Assistant</h4></div>
                 </div>
-                <button onclick="toggleChat()" class="text-white hover:text-gray-200 font-bold">&times;</button>
+                <button onclick="toggleChat()" class="text-white font-bold">&times;</button>
             </div>
-            <!-- Zone des messages -->
             <div id="chatMessages" class="flex-grow p-4 bg-gray-50 overflow-y-auto space-y-4">
-                <div class="bg-white p-3 rounded-lg rounded-tl-none text-sm text-gray-800 shadow-sm border border-gray-100 mr-8">
-                    Bonjour ! Je suis l'assistant intelligent de <strong>Mon Droit en France</strong>. Comment puis-je vous orienter aujourd'hui ?
-                </div>
+                <div class="bg-white p-3 rounded-lg rounded-tl-none text-sm text-gray-800 shadow-sm border border-gray-100 mr-8">Bonjour ! Comment puis-je vous aider ?</div>
             </div>
-            <!-- Zone de saisie -->
             <div class="p-3 bg-white border-t border-gray-100 flex gap-2">
-                <input type="text" id="chatInput" placeholder="Posez votre question..." class="flex-grow p-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-france-bleu">
-                <button onclick="sendMessage()" class="w-10 h-10 bg-france-bleu text-white rounded-full flex items-center justify-center hover:bg-blue-800">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-                </button>
+                <input type="text" id="chatInput" placeholder="Écrivez..." class="flex-grow p-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-france-bleu">
+                <button onclick="sendMessage()" class="w-10 h-10 bg-france-bleu text-white rounded-full flex items-center justify-center">Envoyer</button>
             </div>
         </div>
-
-        <!-- Bouton Flottant pour ouvrir le chat -->
-        <button onclick="toggleChat()" class="w-14 h-14 bg-france-bleu text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-800 transition-transform hover:scale-110 border-2 border-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-        </button>
+        <button onclick="toggleChat()" class="w-14 h-14 bg-france-bleu text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-800 border-2 border-white">💬</button>
     </div>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script>
-        // --- 1. SÉLECTEUR DE LANGUE PERSONNALISÉ ---
-        function toggleLangMenu() {
-            const menu = document.getElementById('langMenu');
-            menu.classList.toggle('hidden');
+        // 1. CARTE LEAFLET
+        document.addEventListener('DOMContentLoaded', function() {
+            var map = L.map('map').setView([48.1903, -4.2860], 8);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            L.marker([47.9975, -4.0978]).addTo(map).bindPopup('<b>Maître Buors</b>');
+            L.marker([48.3903, -4.4860]).addTo(map).bindPopup('<b>Maître Le Gall</b>');
+            setTimeout(function(){ map.invalidateSize(); }, 500);
+        });
+
+        // 2. MODALES & LANGUES
+        function fermerModale(id) { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); }
+        function ouvrirModaleContact(nom, email) { 
+            document.getElementById('nomAvocat').innerText = nom; 
+            document.getElementById('contactModal').classList.remove('hidden'); 
+            document.getElementById('contactModal').classList.add('flex'); 
         }
+        function toggleLangMenu() { document.getElementById('langMenu').classList.toggle('hidden'); }
         function changerLangue(lang, flag, text) {
             document.getElementById('currentFlag').innerText = flag;
             document.getElementById('currentLangText').innerText = text;
             toggleLangMenu();
-            // Ici viendrait la logique de traduction du texte (comme fait précédemment)
         }
 
-        // --- 2. MODALES GÉNÉRIQUES ---
-        function fermerModale(id) { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); }
-
-        // --- 3. MODALE AVOCAT ---
-        let emailAvocatActuel = "";
-        function ouvrirModale(nom, email) {
-            document.getElementById('nomAvocat').innerText = nom;
-            emailAvocatActuel = email;
-            document.getElementById('contactModal').classList.remove('hidden');
-            document.getElementById('contactModal').classList.add('flex');
-        }
-        function envoyerDemande() {
-            const phone = document.getElementById('userPhone').value;
-            const problem = document.getElementById('userProblem').value;
-            if(!phone) return alert("Indiquez un numéro.");
-            window.location.href = `mailto:${emailAvocatActuel}?subject=Demande&body=Problème:${problem} Tel:${phone}`;
-            fermerModale('contactModal');
+        // 3. CHATBOT IA
+        function toggleChat() { document.getElementById('chatWindow').classList.toggle('hidden'); }
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            if(!input.value) return;
+            messages.innerHTML += `<div class="bg-france-bleu text-white p-3 rounded-lg rounded-tr-none text-sm shadow-sm ml-8 self-end">${input.value}</div>`;
+            input.value = "";
+            setTimeout(() => {
+                messages.innerHTML += `<div class="bg-white p-3 rounded-lg rounded-tl-none text-sm text-gray-800 shadow-sm border border-gray-100 mr-8 mt-4">Je suis l'assistant de démonstration. Pour votre sécurité, veuillez utiliser le formulaire de recours.</div>`;
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
         }
 
-        // --- 4. CARTE LEAFLET ---
-        var map = L.map('map').setView([48.1903, -4.2860], 8);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OS' }).addTo(map);
-        L.marker([47.9975, -4.0978]).addTo(map).bindPopup('<b>Maître Buors</b>');
-        L.marker([48.3903, -4.4860]).addTo(map).bindPopup('<b>Maître Le Gall</b>');
+        // 4. LE GÉNÉRATEUR PDF
+        function ouvrirModalePDF() {
+            document.getElementById('pdfModal').classList.remove('hidden');
+            document.getElementById('pdfModal').classList.add('flex');
+        }
 
-        // --- 5. CALCULATEUR DELAI ---
+        function corrigerTexteIA() {
+            const textarea = document.getElementById('pdfCustomText');
+            const btn = document.getElementById('btnIA');
+            const loader = document.getElementById('iaLoading');
+            if(textarea.value.trim() === "") return alert("Veuillez écrire un texte d'abord.");
+            btn.classList.add('hidden');
+            loader.classList.remove('hidden');
+            setTimeout(() => {
+                let texte = textarea.value;
+                texte = texte.charAt(0).toUpperCase() + texte.slice(1);
+                texte = texte.replace(/france/gi, "France");
+                if(!texte.endsWith(".")) texte += ".";
+                textarea.value = texte;
+                loader.classList.add('hidden');
+                btn.classList.remove('hidden');
+                btn.innerHTML = "✅ Texte corrigé !";
+                btn.classList.replace('from-purple-600', 'from-green-500');
+                btn.classList.replace('to-blue-600', 'to-green-600');
+            }, 2000);
+        }
+        
+        function genererPDF() {
+            const prenom = document.getElementById('pdfPrenom').value || "..................";
+            const nom = document.getElementById('pdfNom').value.toUpperCase() || "..................";
+            const agdref = document.getElementById('pdfAgdref').value || "..................";
+            const dateRefus = document.getElementById('pdfDateRefus').value || "..................";
+            
+            const checkboxes = document.querySelectorAll('.pdf-checkbox:checked');
+            let listeArguments = [];
+            checkboxes.forEach(box => { listeArguments.push("- " + box.value); });
+            
+            const texteLibre = document.getElementById('pdfCustomText').value;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            doc.setFont("helvetica");
+            doc.setFontSize(11);
+            
+            doc.text(`${prenom} ${nom}`, 20, 30);
+            doc.text(`N° AGDREF : ${agdref}`, 20, 37);
+            
+            doc.setFont("helvetica", "bold");
+            doc.text("Monsieur le Préfet du Finistère", 120, 50);
+            doc.setFont("helvetica", "normal");
+            doc.text("Préfecture du Finistère", 120, 57);
+            doc.text("42 Boulevard Dupleix, 29320 QUIMPER", 120, 64);
+            
+            const today = new Date().toLocaleDateString('fr-FR');
+            doc.text(`Fait le ${today}`, 120, 80);
+            
+            doc.setFont("helvetica", "bold");
+            doc.text(`Objet : Recours gracieux suite au refus de titre de séjour du ${dateRefus}`, 20, 100);
+            
+            doc.setFont("helvetica", "normal");
+            let introduction = `Monsieur le Préfet,\n\nPar une décision en date du ${dateRefus}, vous avez refusé de faire droit à ma demande de titre de séjour. J'ai l'honneur de former un recours gracieux contre cette décision.\n\nEn effet, je me permets de porter à votre connaissance les éléments suivants :`;
+            let texteDivise = doc.splitTextToSize(introduction, 170);
+            doc.text(texteDivise, 20, 120);
+            
+            let currentY = 120 + (texteDivise.length * 6) + 5;
+            if(listeArguments.length > 0) {
+                let argsText = doc.splitTextToSize(listeArguments.join("\n\n"), 170);
+                doc.text(argsText, 20, currentY);
+                currentY += (argsText.length * 6) + 10;
+            }
+            if(texteLibre) {
+                doc.setFont("helvetica", "italic");
+                let customSplit = doc.splitTextToSize(texteLibre, 170);
+                doc.text(customSplit, 20, currentY);
+                currentY += (customSplit.length * 6) + 10;
+            }
+            doc.setFont("helvetica", "normal");
+            let conclusion = "Vous trouverez ci-joint les pièces justificatives prouvant ma bonne foi.\nJe vous prie d'agréer, Monsieur le Préfet, l'expression de mes salutations distinguées.";
+            let conclSplit = doc.splitTextToSize(conclusion, 170);
+            doc.text(conclSplit, 20, currentY);
+            
+            doc.setFont("helvetica", "bold");
+            doc.text("Signature :", 140, currentY + 30);
+            
+            doc.save(`Recours_${nom}.pdf`);
+            fermerModale('pdfModal');
+        }
+
+        // 5. CALCULATEUR DELAI
         function calculerDelai() {
             const jours = parseInt(document.getElementById('typeDoc').value);
             const dateInput = document.getElementById('dateRecept').value;
@@ -440,127 +486,6 @@
                 document.getElementById('texteResultat').innerHTML = "⏱️ Date limite le " + formatee;
                 document.getElementById('texteConseil').innerHTML = "Ne tardez pas.";
             }
-        }
-
-        // --- 6. LE CHATBOT IA ---
-        function toggleChat() {
-            const chat = document.getElementById('chatWindow');
-            chat.classList.toggle('hidden');
-        }
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const messages = document.getElementById('chatMessages');
-            if(!input.value) return;
-
-            // Message utilisateur
-            messages.innerHTML += `<div class="bg-france-bleu text-white p-3 rounded-lg rounded-tr-none text-sm shadow-sm ml-8 self-end">${input.value}</div>`;
-            
-            const req = input.value.toLowerCase();
-            input.value = "";
-
-            // Simulation IA de base
-            setTimeout(() => {
-                let reponse = "Je suis un prototype. Pour une aide juridique précise, veuillez contacter un avocat de l'annuaire.";
-                if(req.includes("oqtf") || req.includes("quitter")) {
-                    reponse = "Si vous avez reçu une OQTF, il s'agit d'une urgence absolue. Utilisez notre calculateur pour connaître votre délai, puis contactez immédiatement Maître Buors ou un avocat de la région.";
-                } else if(req.includes("asile") || req.includes("ofpra")) {
-                    reponse = "Pour l'asile, vous disposez d'un mois pour saisir la CNDA après un rejet OFPRA. N'oubliez pas de demander l'Aide Juridictionnelle dans les 15 jours.";
-                }
-                messages.innerHTML += `<div class="bg-white p-3 rounded-lg rounded-tl-none text-sm text-gray-800 shadow-sm border border-gray-100 mr-8 mt-4">${reponse}</div>`;
-                messages.scrollTop = messages.scrollHeight;
-            }, 1000);
-        }
-
-        // --- 7. GÉNÉRATEUR DE LETTRE PDF (jsPDF) ---
-        function ouvrirModalePDF() {
-            document.getElementById('pdfModal').classList.remove('hidden');
-            document.getElementById('pdfModal').classList.add('flex');
-        }
-        
-        function genererPDF() {
-            const prenom = document.getElementById('pdfPrenom').value || "..................";
-            const nom = document.getElementById('pdfNom').value.toUpperCase() || "..................";
-            const adresse = document.getElementById('pdfAdresse').value || "..................";
-            const agdref = document.getElementById('pdfAgdref').value || "..................";
-            const dateRefus = document.getElementById('pdfDateRefus').value || "..................";
-            const argument = document.getElementById('pdfArgument').value;
-            
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            // Configuration de la police (standard)
-            doc.setFont("helvetica");
-            doc.setFontSize(11);
-            
-            // En-tête gauche (Expéditeur)
-            doc.text(`${prenom} ${nom}`, 20, 30);
-            doc.text(`${adresse}`, 20, 37);
-            doc.text(`N° Étranger (AGDREF) : ${agdref}`, 20, 44);
-            
-            // En-tête droite (Destinataire)
-            doc.setFont("helvetica", "bold");
-            doc.text("À l'attention de : Monsieur le Préfet du Finistère", 100, 60);
-            doc.setFont("helvetica", "normal");
-            doc.text("Direction de la Citoyenneté et de la Légalité", 100, 67);
-            doc.text("Bureau de l'admission au séjour", 100, 74);
-            doc.text("42 Boulevard Dupleix", 100, 81);
-            doc.text("29320 QUIMPER CEDEX", 100, 88);
-            
-            // Lieu et Date
-            const today = new Date().toLocaleDateString('fr-FR');
-            doc.text(`Fait à ........................, le ${today}`, 120, 105);
-            
-            // Objet
-            doc.setFont("helvetica", "bold");
-            doc.text(`Objet : Recours gracieux suite au refus de titre de séjour du ${dateRefus}.`, 20, 125);
-            doc.text("Envoi en Lettre Recommandée avec Accusé de Réception (LRAR)", 20, 132);
-            
-            // Corps de la lettre
-            doc.setFont("helvetica", "normal");
-            const lignesTexte = [
-                "Monsieur le Préfet,",
-                "",
-                `Par une décision en date du ${dateRefus}, vous avez refusé de faire droit à ma demande de`,
-                "délivrance ou de renouvellement de mon titre de séjour.",
-                "",
-                "Par la présente, j'ai l'honneur de former un recours gracieux contre cette décision et de",
-                "solliciter de votre haute bienveillance un réexamen attentif de mon dossier.",
-                "",
-                "En effet, je me permets de porter à votre connaissance les éléments suivants qui n'ont",
-                "peut-être pas pu être pleinement pris en compte lors de l'instruction de ma demande :",
-                "",
-                argument,
-                "",
-                "Vous trouverez ci-joint les pièces justificatives récentes démontrant ma bonne foi et",
-                "mon intégration sur le territoire français.",
-                "",
-                "Espérant que ces éléments nouveaux retiendront toute votre attention et vous amèneront",
-                "à reconsidérer ma situation, je reste à votre entière disposition pour tout entretien.",
-                "",
-                "Je vous prie d'agréer, Monsieur le Préfet, l'expression de ma considération distinguée."
-            ];
-            
-            let y = 145;
-            lignesTexte.forEach(ligne => {
-                doc.text(ligne, 20, y);
-                y += 6;
-            });
-            
-            // Signature
-            doc.setFont("helvetica", "bold");
-            doc.text("Signature :", 150, y + 10);
-            
-            // Pièces jointes
-            doc.setFont("helvetica", "italic");
-            doc.setFontSize(9);
-            doc.text("Pièces jointes obligatoires à ajouter dans votre enveloppe :", 20, 270);
-            doc.text("- Copie de la décision de refus", 20, 275);
-            doc.text("- Copie de votre passeport / justificatif d'identité", 20, 280);
-            doc.text("- Tous les justificatifs récents prouvant votre argument (fiches de paie, santé, famille...)", 20, 285);
-            
-            // Déclenchement du téléchargement
-            doc.save(`Recours_Gracieux_${nom}.pdf`);
-            fermerModale('pdfModal');
         }
     </script>
 </body>
