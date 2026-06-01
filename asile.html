@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande d'Asile - Mon Droit en France</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'france-bleu': '#002395', 'france-rouge': '#ED2939' } } } }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <nav class="w-full p-6 bg-white border-b border-gray-100 flex justify-between items-center sticky top-0 z-10">
+        <a href="index.html" class="text-france-bleu font-bold hover:underline flex items-center gap-2">
+            ← Retour à l'accueil
+        </a>
+        <div class="text-sm font-semibold text-france-bleu">
+            📍 Édition Finistère
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto py-12 px-6">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            <div class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold mb-6">
+                Recours OFPRA / CNDA
+            </div>
+            
+            <h1 class="text-4xl font-extrabold text-france-bleu mb-6">Demande d'Asile & CNDA</h1>
+            <p class="text-lg text-gray-600 mb-8 border-l-4 border-green-500 pl-4">
+                Si l'OFPRA a rejeté votre demande d'asile, vous avez le droit de contester cette décision devant la Cour Nationale du Droit d'Asile (CNDA). C'est souvent l'étape décisive de votre parcours.
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">1. Le délai de recours</h2>
+            <div class="bg-red-50 p-4 rounded-lg border border-red-100 mb-6">
+                <p class="text-sm">Vous disposez d'<strong>1 mois</strong> (à compter de la notification de la décision de l'OFPRA) pour déposer votre recours devant la CNDA. Ce délai est strict : si vous le dépassez, votre demande est définitivement irrecevable.</p>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">2. L'Aide Juridictionnelle (Avocat gratuit)</h2>
+            <p class="text-gray-700 mb-4">
+                Vous avez droit à un avocat gratuit pour vous défendre à la CNDA. Vous pouvez en choisir un vous-même ou demander à la Cour de vous en désigner un d'office. <strong>Attention :</strong> La demande d'aide juridictionnelle doit être faite dans les 15 jours suivant la décision de l'OFPRA pour suspendre le délai d'un mois.
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">3. L'importance de l'audience</h2>
+            <p class="text-gray-700 mb-8">
+                L'audience à la CNDA (à Montreuil ou en vidéo-audience) est le moment où vous serez entendu par des juges. Votre avocat rédigera les arguments juridiques, organisera vos preuves, et vous préparera aux questions parfois complexes des juges.
+            </p>
+
+            <div class="bg-france-bleu text-white p-6 rounded-xl text-center">
+                <h3 class="font-bold text-xl mb-2">Préparez votre audience</h3>
+                <p class="mb-4 text-blue-100">Trouvez un avocat compétent en droit d'asile pour défendre votre histoire.</p>
+                <a href="index.html#avocats" class="inline-block bg-white text-france-bleu font-bold px-6 py-3 rounded hover:bg-gray-100 transition">
+                    Voir les avocats
+                </a>
+            </div>
+
+            <hr class="my-8 border-gray-100">
+            <p class="text-xs text-gray-400 text-center leading-relaxed">
+                ⚖️ <strong>Avertissement :</strong> Les informations fournies ont une vocation purement informative. Elles sont établies sur la base du CESEDA consultable sur <em>Légifrance.gouv.fr</em>.
+            </p>
+        </div>
+    </main>
+</body>
+</html>
