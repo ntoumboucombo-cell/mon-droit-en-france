@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprendre l'OQTF - Mon Droit en France</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { 'france-bleu': '#002395', 'france-rouge': '#ED2939' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Navigation retour -->
+    <nav class="w-full p-6 bg-white border-b border-gray-100 flex justify-between items-center sticky top-0 z-10">
+        <a href="index.html" class="text-france-bleu font-bold hover:underline flex items-center gap-2">
+            ← Retour à l'accueil
+        </a>
+        <div class="text-sm font-semibold text-france-bleu">
+            📍 Édition Finistère
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto py-12 px-6">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            <div class="inline-block bg-red-100 text-france-rouge px-3 py-1 rounded-full text-sm font-bold mb-6">
+                Procédure d'Urgence
+            </div>
+            
+            <h1 class="text-4xl font-extrabold text-france-bleu mb-6">Comprendre l'OQTF</h1>
+            <p class="text-lg text-gray-600 mb-8 border-l-4 border-france-rouge pl-4">
+                L'Obligation de Quitter le Territoire Français (OQTF) est une décision de la préfecture vous demandant de quitter la France. Les délais pour contester cette décision sont extrêmement courts.
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">1. Les différents types d'OQTF et délais</h2>
+            <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-france-bleu">OQTF avec délai de départ volontaire</h3>
+                    <p class="text-sm mt-2">Vous disposez en général de <strong>30 jours</strong> pour déposer un recours devant le Tribunal Administratif à compter de la notification de la décision.</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                    <h3 class="font-bold text-france-rouge">OQTF sans délai (Urgence absolue)</h3>
+                    <p class="text-sm mt-2">Vous n'avez que <strong>48 heures</strong> pour agir si vous êtes placé en Centre de Rétention Administrative (CRA) ou assigné à résidence.</p>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">2. Que se passe-t-il si je fais un recours ?</h2>
+            <p class="text-gray-700 mb-4">
+                Le recours devant le juge administratif est <strong>suspensif</strong>. Cela signifie que tant que le juge n'a pas rendu sa décision, l'administration ne peut pas vous expulser de force du territoire (sauf cas très particuliers).
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">3. Ai-je besoin d'un avocat ?</h2>
+            <p class="text-gray-700 mb-8">
+                Bien qu'il soit techniquement possible de se défendre seul, le droit des étrangers est très complexe. Un avocat saura soulever les erreurs juridiques de la préfecture (ex: atteinte à la vie privée et familiale, erreur manifeste d'appréciation).
+            </p>
+
+            <div class="bg-france-bleu text-white p-6 rounded-xl text-center">
+                <h3 class="font-bold text-xl mb-2">Prêt à entamer une démarche ?</h3>
+                <p class="mb-4 text-blue-100">Trouvez un avocat au barreau de Quimper ou Brest pour vous accompagner.</p>
+                <a href="index.html#avocats" class="inline-block bg-white text-france-bleu font-bold px-6 py-3 rounded hover:bg-gray-100 transition">
+                    Voir les avocats
+                </a>
+            </div>
+
+            <!-- Disclaimer Légifrance en tout petit -->
+            <hr class="my-8 border-gray-100">
+            <p class="text-xs text-gray-400 text-center leading-relaxed">
+                ⚖️ <strong>Avertissement :</strong> Les informations fournies sur cette page ont une vocation purement informative et vulgarisatrice. Elles sont établies sur la base du Code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA) consultable sur <em>Légifrance.gouv.fr</em>. Chaque situation juridique étant unique, la consultation d'un avocat inscrit au barreau reste fortement recommandée.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>
