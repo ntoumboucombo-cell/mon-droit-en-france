@@ -23,14 +23,15 @@
         }
     </script>
 </head>
-<body class="bg-white text-gray-800 font-sans antialiased">
+<!-- Le fond avec le dégradé du drapeau français ultra-léger (fixé à 6% d'opacité) -->
+<body class="text-gray-800 font-sans antialiased min-h-screen" style="background: linear-gradient(135deg, rgba(0, 35, 149, 0.06) 0%, rgba(255, 255, 255, 1) 50%, rgba(237, 41, 57, 0.06) 100%); background-attachment: fixed;">
     
-    <!-- Barre de Navigation -->
-    <nav class="w-full p-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+    <!-- Barre de Navigation (légèrement transparente avec effet flou) -->
+    <nav class="w-full p-6 border-b border-gray-100 flex justify-between items-center bg-white/70 backdrop-blur-md sticky top-0 z-10">
         <div class="text-2xl font-black text-france-bleu tracking-tight">
             Mon Droit en France.
         </div>
-        <div class="text-sm font-semibold text-france-bleu bg-blue-50 px-4 py-2 rounded-full border border-blue-100 shadow-sm">
+        <div class="text-sm font-semibold text-france-bleu bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100 shadow-sm">
             📍 Édition Finistère
         </div>
     </nav>
@@ -45,7 +46,7 @@
                 </span>
             </h1>
             
-            <p class="mt-8 text-xl text-gray-600 leading-relaxed">
+            <p class="mt-8 text-xl text-gray-700 leading-relaxed font-medium">
                 Informez-vous sur les procédures face à la préfecture et trouvez l'avocat spécialisé qu'il vous faut pour vous défendre dans votre région.
             </p>
             
@@ -53,22 +54,22 @@
                 <a href="#fiches" class="px-8 py-4 text-center text-white font-bold bg-france-rouge rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
                     Identifier mon problème
                 </a>
-                <a href="#avocats" class="px-8 py-4 text-center text-france-bleu font-bold bg-white border-2 border-gray-200 rounded-lg hover:border-france-bleu transition-all">
+                <a href="#avocats" class="px-8 py-4 text-center text-france-bleu font-bold bg-white border-2 border-gray-200 rounded-lg hover:border-france-bleu transition-all shadow-sm">
                     Trouver un avocat
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Section Fiches Pratiques (L'entonnoir d'information) -->
-    <section id="fiches" class="bg-bcg-gris py-20 border-t border-gray-100">
+    <!-- Section Fiches Pratiques -->
+    <section id="fiches" class="py-20 border-t border-gray-200/50">
         <div class="px-6 mx-auto max-w-7xl">
             <h2 class="text-3xl font-bold text-france-bleu mb-12">Votre situation juridique</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- Carte 1 : OQTF -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
+                <div class="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
                     <div class="w-12 h-12 bg-red-50 text-france-rouge rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-rouge group-hover:text-white transition-colors">
                         !
                     </div>
@@ -80,7 +81,7 @@
                 </div>
 
                 <!-- Carte 2 : Refus de séjour -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
+                <div class="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
                     <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
                         📄
                     </div>
@@ -92,7 +93,7 @@
                 </div>
 
                 <!-- Carte 3 : Demande d'Asile -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
+                <div class="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
                     <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
                         🛡️
                     </div>
@@ -109,15 +110,15 @@
 
     <!-- Section Calculateur d'urgence -->
     <section class="py-20 px-6 mx-auto max-w-7xl">
-        <div class="bg-blue-50 rounded-2xl p-8 md:p-12 border border-blue-100">
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-blue-100 shadow-sm">
             <h2 class="text-3xl font-bold text-france-bleu mb-4">Calculateur de délai de recours</h2>
             <p class="text-gray-700 mb-8 text-lg">Ne ratez pas la date limite. Calculez instantanément le temps qu'il vous reste pour saisir le Tribunal Administratif.</p>
             
-            <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2">Quel document avez-vous reçu ?</label>
-                        <select id="typeDoc" class="w-full p-3 border border-gray-300 rounded-lg bg-white">
+                        <select id="typeDoc" class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-france-bleu focus:outline-none">
                             <option value="30">OQTF avec délai de départ volontaire (30 jours)</option>
                             <option value="2">OQTF sans délai (48 heures)</option>
                             <option value="15">OQTF liée à une assignation à résidence (15 jours)</option>
@@ -126,11 +127,11 @@
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2">Date de réception (notification) :</label>
-                        <input type="date" id="dateRecept" class="w-full p-3 border border-gray-300 rounded-lg bg-white">
+                        <input type="date" id="dateRecept" class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-france-bleu focus:outline-none">
                     </div>
                 </div>
                 
-                <button onclick="calculerDelai()" class="mt-6 w-full md:w-auto px-8 py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all">
+                <button onclick="calculerDelai()" class="mt-6 w-full md:w-auto px-8 py-3 bg-france-bleu text-white font-bold rounded-lg hover:bg-blue-800 transition-all shadow-md hover:shadow-lg">
                     Calculer ma date limite
                 </button>
 
@@ -144,15 +145,15 @@
     </section>
 
     <!-- Section Annuaire des Avocats -->
-    <section id="avocats" class="bg-white py-20 border-t border-gray-100">
+    <section id="avocats" class="py-20 border-t border-gray-200/50">
         <div class="px-6 mx-auto max-w-7xl">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
                 <div>
                     <h2 class="text-3xl font-bold text-france-bleu mb-4">Les avocats du Finistère (29)</h2>
-                    <p class="text-gray-600 text-lg">Sélection d'avocats inscrits aux Barreaux de Quimper et de Brest.</p>
+                    <p class="text-gray-700 text-lg">Sélection d'avocats inscrits aux Barreaux de Quimper et de Brest.</p>
                 </div>
                 <div class="mt-4 md:mt-0">
-                    <select class="p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 font-semibold">
+                    <select class="p-3 border border-gray-300 rounded-lg bg-white/90 text-gray-700 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-france-bleu">
                         <option>Tous les barreaux</option>
                         <option>Barreau de Quimper</option>
                         <option>Barreau de Brest</option>
@@ -164,20 +165,20 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- Profil Maître Buors -->
-                <div class="border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between">
+                <div class="bg-white/90 backdrop-blur-sm border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-4 mb-4">
                             <!-- Emplacement Photo -->
                             <img src="https://ui-avatars.com/api/?name=Maître+Buors&background=002395&color=fff&size=150" alt="Photo Maître Buors" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
                             <div>
                                 <h3 class="font-bold text-lg text-gray-900">Maître Buors</h3>
-                                <p class="text-sm text-gray-500 font-semibold">📍 Barreau de Quimper</p>
+                                <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Quimper</p>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4">Avocat au Barreau de Quimper, intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour).</p>
+                        <p class="text-sm text-gray-700 mb-4">Avocat au Barreau de Quimper, intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour).</p>
                         <div class="mb-6">
-                            <span class="inline-block bg-red-50 text-france-rouge text-xs px-2 py-1 rounded font-bold mr-2 mb-2">Urgence OQTF</span>
-                            <span class="inline-block bg-blue-50 text-france-bleu text-xs px-2 py-1 rounded font-bold mb-2">Droit d'Asile</span>
+                            <span class="inline-block bg-red-50 text-france-rouge border border-red-100 text-xs px-2 py-1 rounded font-bold mr-2 mb-2">Urgence OQTF</span>
+                            <span class="inline-block bg-blue-50 text-france-bleu border border-blue-100 text-xs px-2 py-1 rounded font-bold mb-2">Droit d'Asile</span>
                         </div>
                     </div>
                     <button class="w-full py-2 bg-gray-50 text-france-bleu font-bold rounded border border-gray-200 hover:bg-white hover:border-france-bleu transition-all">
@@ -186,11 +187,11 @@
                 </div>
 
                 <!-- Espace pour un futur avocat de Brest -->
-                <div class="border border-dashed border-gray-300 p-6 rounded-xl flex flex-col items-center justify-center text-center bg-gray-50">
+                <div class="border-2 border-dashed border-gray-300/80 p-6 rounded-xl flex flex-col items-center justify-center text-center bg-white/40 backdrop-blur-sm">
                     <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 mb-4">👤</div>
-                    <h3 class="font-bold text-gray-500">Avocat(e) Partenaire</h3>
-                    <p class="text-sm text-gray-400 mt-2">Barreau de Brest</p>
-                    <p class="text-xs text-gray-400 mt-4">Vous êtes avocat ? Rejoignez l'annuaire.</p>
+                    <h3 class="font-bold text-gray-600">Avocat(e) Partenaire</h3>
+                    <p class="text-sm text-gray-500 mt-2">Barreau de Brest</p>
+                    <p class="text-xs text-gray-500 mt-4">Vous êtes avocat ? Rejoignez l'annuaire.</p>
                 </div>
 
             </div>
@@ -219,14 +220,15 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateFormatee = dateLimite.toLocaleDateString('fr-FR', options);
 
-            resultatBox.classList.remove('hidden', 'bg-red-100', 'bg-orange-100', 'text-red-800', 'text-orange-800');
+            resultatBox.classList.remove('hidden', 'bg-red-100', 'bg-orange-100', 'text-red-800', 'text-orange-800', 'border-red-200', 'border-orange-200');
+            resultatBox.classList.add('border');
             
             if (jours <= 15) {
-                resultatBox.classList.add('bg-red-100', 'text-red-800');
+                resultatBox.classList.add('bg-red-50', 'text-red-800', 'border-red-200');
                 texteResultat.innerHTML = "⚠️ URGENCE : Date limite le " + dateFormatee;
                 texteConseil.innerHTML = "Le délai est extrêmement court. Contactez un avocat immédiatement.";
             } else {
-                resultatBox.classList.add('bg-orange-100', 'text-orange-800');
+                resultatBox.classList.add('bg-orange-50', 'text-orange-800', 'border-orange-200');
                 texteResultat.innerHTML = "⏱️ Date limite le " + dateFormatee;
                 texteConseil.innerHTML = "Ne tardez pas, la constitution d'un dossier solide prend du temps.";
             }
