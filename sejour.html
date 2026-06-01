@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refus de Titre de Séjour - Mon Droit en France</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'france-bleu': '#002395', 'france-rouge': '#ED2939' } } } }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Navigation retour -->
+    <nav class="w-full p-6 bg-white border-b border-gray-100 flex justify-between items-center sticky top-0 z-10">
+        <a href="index.html" class="text-france-bleu font-bold hover:underline flex items-center gap-2">
+            ← Retour à l'accueil
+        </a>
+        <div class="text-sm font-semibold text-france-bleu">
+            📍 Édition Finistère
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto py-12 px-6">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            <div class="inline-block bg-blue-100 text-france-bleu px-3 py-1 rounded-full text-sm font-bold mb-6">
+                Démarche en Préfecture
+            </div>
+            
+            <h1 class="text-4xl font-extrabold text-france-bleu mb-6">Refus de Titre de Séjour</h1>
+            <p class="text-lg text-gray-600 mb-8 border-l-4 border-france-bleu pl-4">
+                La préfecture a refusé de vous délivrer ou de renouveler votre carte de séjour. Cette décision est souvent accompagnée d'une OQTF, mais des recours existent pour faire valoir vos droits.
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">1. Les différents types de recours</h2>
+            <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-800">Le recours gracieux (devant le Préfet)</h3>
+                    <p class="text-sm mt-2">Vous demandez directement au Préfet du Finistère de revoir sa décision en apportant de nouveaux éléments à votre dossier.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-800">Le recours hiérarchique (devant le Ministre)</h3>
+                    <p class="text-sm mt-2">Vous vous adressez au Ministre de l'Intérieur pour contester la décision de la préfecture.</p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <h3 class="font-bold text-france-bleu">Le recours contentieux (devant le Juge)</h3>
+                    <p class="text-sm mt-2">C'est la voie la plus solide. Vous saisissez le Tribunal Administratif (TA) pour faire annuler la décision. Délai général : <strong>2 mois</strong> (Attention : délai réduit si accompagné d'une OQTF).</p>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">2. Attention au "Refus Implicite"</h2>
+            <p class="text-gray-700 mb-8">
+                Si vous avez déposé une demande de titre de séjour et que la préfecture ne vous répond pas pendant <strong>plus de 4 mois</strong>, le silence de l'administration vaut généralement décision de rejet (refus implicite). Vous pouvez alors attaquer ce silence devant le juge.
+            </p>
+
+            <div class="bg-france-bleu text-white p-6 rounded-xl text-center">
+                <h3 class="font-bold text-xl mb-2">Sécurisez votre dossier</h3>
+                <p class="mb-4 text-blue-100">Un avocat peut vous aider à rédiger vos recours avec les bons arguments juridiques.</p>
+                <a href="index.html#avocats" class="inline-block bg-white text-france-bleu font-bold px-6 py-3 rounded hover:bg-gray-100 transition">
+                    Trouver un avocat
+                </a>
+            </div>
+
+            <hr class="my-8 border-gray-100">
+            <p class="text-xs text-gray-400 text-center leading-relaxed">
+                ⚖️ <strong>Avertissement :</strong> Les informations fournies ont une vocation purement informative. Elles sont établies sur la base du CESEDA consultable sur <em>Légifrance.gouv.fr</em>.
+            </p>
+        </div>
+    </main>
+</body>
+</html>
