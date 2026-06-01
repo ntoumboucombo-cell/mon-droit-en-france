@@ -65,52 +65,49 @@
         <div class="px-6 mx-auto max-w-7xl">
             <h2 class="text-3xl font-bold text-france-bleu mb-12">Votre situation juridique</h2>
             
-            <!-- Grille des cartes -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- Carte 1 : OQTF -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
                     <div class="w-12 h-12 bg-red-50 text-france-rouge rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-rouge group-hover:text-white transition-colors">
                         !
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-gray-900">OQTF</h3>
                     <p class="text-gray-600 mb-4">Obligation de Quitter le Territoire Français. Les délais de recours sont extrêmement courts (48h à 30 jours).</p>
-                    <span class="text-france-bleu font-semibold text-sm flex items-center">
+                    <a href="oqtf.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">
                         Comprendre les délais →
-                    </span>
+                    </a>
                 </div>
 
                 <!-- Carte 2 : Refus de séjour -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
                     <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
                         📄
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-gray-900">Refus de Titre de Séjour</h3>
                     <p class="text-gray-600 mb-4">La préfecture a refusé votre demande ou votre renouvellement. Découvrez les recours possibles.</p>
-                    <span class="text-france-bleu font-semibold text-sm flex items-center">
+                    <a href="sejour.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">
                         Voir les recours →
-                    </span>
+                    </a>
                 </div>
 
                 <!-- Carte 3 : Demande d'Asile -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all group">
                     <div class="w-12 h-12 bg-blue-50 text-france-bleu rounded-lg flex items-center justify-center font-bold text-xl mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
                         🛡️
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-gray-900">Demande d'Asile</h3>
                     <p class="text-gray-600 mb-4">Rejet de l'OFPRA ou convocation à la CNDA. Préparez votre audience et renforcez votre dossier.</p>
-                    <span class="text-france-bleu font-semibold text-sm flex items-center">
+                    <a href="asile.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">
                         Préparer l'audience →
-                    </span>
+                    </a>
                 </div>
 
             </div>
         </div>
     </section>
 
-</body>
-</html>
-<!-- Section Calculateur d'urgence -->
+    <!-- Section Calculateur d'urgence -->
     <section class="py-20 px-6 mx-auto max-w-7xl">
         <div class="bg-blue-50 rounded-2xl p-8 md:p-12 border border-blue-100">
             <h2 class="text-3xl font-bold text-france-bleu mb-4">Calculateur de délai de recours</h2>
@@ -142,6 +139,60 @@
                     <p class="text-lg font-bold" id="texteResultat"></p>
                     <p class="text-sm mt-2" id="texteConseil"></p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Annuaire des Avocats -->
+    <section id="avocats" class="bg-white py-20 border-t border-gray-100">
+        <div class="px-6 mx-auto max-w-7xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-france-bleu mb-4">Les avocats du Finistère (29)</h2>
+                    <p class="text-gray-600 text-lg">Sélection d'avocats inscrits aux Barreaux de Quimper et de Brest.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <select class="p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 font-semibold">
+                        <option>Tous les barreaux</option>
+                        <option>Barreau de Quimper</option>
+                        <option>Barreau de Brest</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grille des profils d'avocats -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Profil Maître Buors -->
+                <div class="border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <!-- Emplacement Photo -->
+                            <img src="https://ui-avatars.com/api/?name=Maître+Buors&background=002395&color=fff&size=150" alt="Photo Maître Buors" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900">Maître Buors</h3>
+                                <p class="text-sm text-gray-500 font-semibold">📍 Barreau de Quimper</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Avocat au Barreau de Quimper, intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour).</p>
+                        <div class="mb-6">
+                            <span class="inline-block bg-red-50 text-france-rouge text-xs px-2 py-1 rounded font-bold mr-2 mb-2">Urgence OQTF</span>
+                            <span class="inline-block bg-blue-50 text-france-bleu text-xs px-2 py-1 rounded font-bold mb-2">Droit d'Asile</span>
+                        </div>
+                    </div>
+                    <button class="w-full py-2 bg-gray-50 text-france-bleu font-bold rounded border border-gray-200 hover:bg-white hover:border-france-bleu transition-all">
+                        Contacter le cabinet
+                    </button>
+                </div>
+
+                <!-- Espace pour un futur avocat de Brest -->
+                <div class="border border-dashed border-gray-300 p-6 rounded-xl flex flex-col items-center justify-center text-center bg-gray-50">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 mb-4">👤</div>
+                    <h3 class="font-bold text-gray-500">Avocat(e) Partenaire</h3>
+                    <p class="text-sm text-gray-400 mt-2">Barreau de Brest</p>
+                    <p class="text-xs text-gray-400 mt-4">Vous êtes avocat ? Rejoignez l'annuaire.</p>
+                </div>
+
             </div>
         </div>
     </section>
@@ -181,56 +232,5 @@
             }
         }
     </script>
-<!-- Section Annuaire des Avocats -->
-    <section id="avocats" class="bg-white py-20 border-t border-gray-100">
-        <div class="px-6 mx-auto max-w-7xl">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-3xl font-bold text-france-bleu mb-4">Les avocats du Finistère (29)</h2>
-                    <p class="text-gray-600 text-lg">Sélection d'avocats inscrits aux Barreaux de Quimper et de Brest.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <select class="p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 font-semibold">
-                        <option>Tous les barreaux</option>
-                        <option>Barreau de Quimper</option>
-                        <option>Barreau de Brest</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Grille des profils d'avocats -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Profil Maître Buors -->
-                <div class="border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-4 mb-4">
-                            <!-- Emplacement Photo -->
-                            <img src="https://ui-avatars.com/api/?name=Maître+Buors&background=002395&color=fff&size=150" alt="Photo Maître Buors" class="w-16 h-16 rounded-full object-cover border-2 border-gray-100">
-                            <div>
-                                <h3 class="font-bold text-lg text-gray-900">Maître Buors</h3>
-                                <p class="text-sm text-gray-500 font-semibold">📍 Barreau de Quimper</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-600 mb-4">Avocat au Barreau de Quimper, intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour).</p>
-                        <div class="mb-6">
-                            <a href="oqtf.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">
-    Comprendre les délais →
-</a>                        </div>
-                    </div>
-                    <button class="w-full py-2 bg-gray-50 text-france-bleu font-bold rounded border border-gray-200 hover:bg-white hover:border-france-bleu transition-all">
-                        Contacter le cabinet
-                    </button>
-                </div>
-
-                <!-- Espace pour un futur avocat de Brest -->
-                <div class="border border-dashed border-gray-300 p-6 rounded-xl flex flex-col items-center justify-center text-center bg-gray-50">
-                    <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 mb-4">👤</div>
-                    <h3 class="font-bold text-gray-500">Avocat(e) Partenaire</h3>
-                    <p class="text-sm text-gray-400 mt-2">Barreau de Brest</p>
-                    <p class="text-xs text-gray-400 mt-4">Vous êtes avocat ? Rejoignez l'annuaire.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
+</body>
+</html>
