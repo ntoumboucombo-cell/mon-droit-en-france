@@ -19,6 +19,17 @@
             }
         }
     </script>
+    <style>
+        /* Petite animation pour rendre les marqueurs de la carte encore plus vivants */
+        .marker-pulse {
+            animation: pulse-marker 2s infinite;
+        }
+        @keyframes pulse-marker {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 35, 149, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 35, 149, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 35, 149, 0); }
+        }
+    </style>
 </head>
 <body class="text-gray-800 font-sans antialiased min-h-screen" style="background: linear-gradient(135deg, rgba(0, 35, 149, 0.35) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(237, 41, 57, 0.35) 100%); background-attachment: fixed;">
     
@@ -283,7 +294,7 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
                 <div>
                     <h2 class="text-3xl font-bold text-france-bleu mb-4">Actualités Juridiques</h2>
-                    <p class="text-gray-700 text-lg">Restez informé des dernières évolutions du droit des étrangers en France et en Bretagne.</p>
+                    <p class="text-gray-700 text-lg">Restez informé des dernières évolutions du droit des étrangers en Bretagne.</p>
                 </div>
                 <a href="#" class="hidden md:block text-france-bleu font-bold hover:underline mb-1">Voir tous les articles →</a>
             </div>
@@ -440,14 +451,40 @@
         var mapInstance;
         var markersGroup = [];
 
-        // INITIALISATION CARTE CENTRÉE SUR LE FINISTÈRE
+        // INITIALISATION CARTE VERROUILLÉE SUR LE FINISTÈRE + NOUVEAU DESIGN CARTO DB
         document.addEventListener('DOMContentLoaded', function() {
-            mapInstance = L.map('map').setView([48.1903, -4.1860], 8);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapInstance);
+            // Définition des limites géographiques (maxBounds) pour bloquer l'utilisateur dans le Finistère
+            const finistereBounds = [
+                [47.7000, -5.2000], // Sud-Ouest
+                [48.7500, -3.3500]  // Nord-Est
+            ];
+
+            mapInstance = L.map('map', {
+                maxBounds: finistereBounds, 
+                maxBoundsViscosity: 1.0,     
+                minZoom: 8                  
+            }).setView([48.1903, -4.1860], 8);
+
+            // NOUVEAU FOND DE CARTE : CartoDB Positron (Premium et Épuré)
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(mapInstance);
             
+            // NOUVEAUX MARQUEURS CUSTOM EN CSS (Plus de vieux pins bleus)
+            const customIcon = L.divIcon({
+                className: 'custom-icon',
+                html: `<div class="w-10 h-10 bg-france-bleu text-white rounded-full flex items-center justify-center shadow-xl border-2 border-white text-xl marker-pulse">⚖️</div>`,
+                iconSize: [40, 40],
+                iconAnchor: [20, 20],
+                popupAnchor: [0, -20]
+            });
+
+            // Ajout des marqueurs sur mesure
             avocatsFinistere.forEach(avocat => {
-                var marker = L.marker([avocat.lat, avocat.lng]).addTo(mapInstance)
-                              .bindPopup(`<b>${avocat.nom}</b><br>Barreau de ${avocat.barreau.charAt(0).toUpperCase() + avocat.barreau.slice(1)}`);
+                var marker = L.marker([avocat.lat, avocat.lng], { icon: customIcon }).addTo(mapInstance)
+                              .bindPopup(`<div class="text-center"><b>${avocat.nom}</b><br><span class="text-xs text-gray-500">Barreau de ${avocat.barreau.charAt(0).toUpperCase() + avocat.barreau.slice(1)}</span></div>`);
                 markersGroup.push({ marker: marker, id: avocat.id, barreau: avocat.barreau, lat: avocat.lat, lng: avocat.lng });
             });
             
