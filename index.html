@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Droit en France - Plateforme Nationale</title>
+    <title>Mon Droit en France - Édition Finistère</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Leaflet CSS & JS pour la carte interactive -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
-    <!-- Librairie jsPDF pour générer le PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <script>
@@ -25,7 +22,6 @@
 </head>
 <body class="text-gray-800 font-sans antialiased min-h-screen" style="background: linear-gradient(135deg, rgba(0, 35, 149, 0.35) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(237, 41, 57, 0.35) 100%); background-attachment: fixed;">
     
-    <!-- Barre de Navigation avec LOGO et Drapeaux -->
     <nav class="w-full p-6 border-b border-gray-100 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="flex items-center gap-3">
             <svg class="w-8 h-8 text-france-rouge" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +32,6 @@
             </div>
         </div>
         <div class="flex items-center gap-4 relative">
-            <!-- Sélecteur de langue -->
             <div class="relative">
                 <button onclick="toggleLangMenu()" class="flex items-center gap-2 text-sm border border-gray-200 rounded-md px-3 py-2 bg-white hover:bg-gray-50 shadow-sm transition-all font-bold">
                     <span id="currentFlag">🇫🇷</span> <span id="currentLangText">FR</span>
@@ -49,12 +44,11 @@
                 </div>
             </div>
             <div class="hidden md:block text-sm font-semibold text-france-bleu bg-blue-50/80 px-4 py-2 rounded-full border border-blue-100 shadow-sm">
-                🇫🇷 164 Barreaux Couverts
+                📍 Édition Finistère
             </div>
         </div>
     </nav>
 
-    <!-- Section Héro -->
     <section class="px-6 py-20 mx-auto max-w-7xl md:py-28">
         <div class="max-w-3xl">
             <h1 id="heroTitle" class="text-5xl font-extrabold tracking-tight text-france-bleu md:text-6xl leading-tight">
@@ -64,26 +58,24 @@
                 </span>
             </h1>
             <p id="heroDesc" class="mt-8 text-xl text-gray-700 leading-relaxed font-medium">
-                Informez-vous sur les procédures face aux préfectures et trouvez l'avocat spécialisé qu'il vous faut pour vous défendre, partout en France.
+                Informez-vous sur les procédures face à la préfecture et trouvez l'avocat spécialisé qu'il vous faut pour vous défendre dans le Finistère.
             </p>
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
                 <a href="#fiches" class="px-8 py-4 text-center text-white font-bold bg-france-rouge rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
                     Identifier mon problème
                 </a>
                 <a href="#avocats" class="px-8 py-4 text-center text-france-bleu font-bold bg-white border-2 border-gray-200 rounded-lg hover:border-france-bleu transition-all shadow-sm">
-                    Trouver un avocat
+                    Trouver un avocat (29)
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Section Fiches Pratiques (Avec liens restaurés et icônes) -->
     <section id="fiches" class="py-20 border-t border-gray-200/50">
         <div class="px-6 mx-auto max-w-7xl">
             <h2 class="text-3xl font-bold text-france-bleu mb-12">Votre situation juridique</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <!-- Carte OQTF -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group flex flex-col">
                     <div class="w-14 h-14 bg-red-50 text-france-rouge rounded-xl flex items-center justify-center mb-6 group-hover:bg-france-rouge group-hover:text-white transition-colors">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
@@ -93,7 +85,6 @@
                     <a href="oqtf.html" class="text-france-bleu font-semibold text-sm flex items-center hover:underline">Comprendre les délais →</a>
                 </div>
                 
-                <!-- Carte Refus de séjour + Bouton PDF -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group flex flex-col border-t-4 border-t-france-bleu">
                     <div class="w-14 h-14 bg-blue-50 text-france-bleu rounded-xl flex items-center justify-center mb-6 group-hover:bg-france-bleu group-hover:text-white transition-colors">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
@@ -107,7 +98,6 @@
                     </button>
                 </div>
                 
-                <!-- Carte Asile -->
                 <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all group flex flex-col">
                     <div class="w-14 h-14 bg-green-50 text-green-700 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-700 group-hover:text-white transition-colors">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"></path></svg>
@@ -121,7 +111,6 @@
         </div>
     </section>
 
-    <!-- Section Calculateur d'urgence -->
     <section class="py-20 px-6 mx-auto max-w-7xl">
         <div class="bg-white/90 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-blue-100 shadow-lg">
             <h2 class="text-3xl font-bold text-france-bleu mb-4">Calculateur de délai de recours</h2>
@@ -152,28 +141,26 @@
         </div>
     </section>
 
-    <!-- ANNUAIRE NATIONAL & CARTE -->
     <section id="avocats" class="py-20 border-t border-gray-200/50">
         <div class="px-6 mx-auto max-w-7xl">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
                 <div>
-                    <h2 class="text-3xl font-bold text-france-bleu mb-2">Annuaire National des Barreaux (CNB)</h2>
-                    <p class="text-gray-600 text-lg">Trouvez votre avocat partout en France. <span class="font-bold text-green-700">Zone Finistère Gratuite.</span></p>
+                    <h2 class="text-3xl font-bold text-france-bleu mb-2">Les avocats du Finistère (29)</h2>
+                    <p class="text-gray-600 text-lg">Trouvez votre avocat spécialisé près de chez vous. <span class="font-bold text-green-700">Mise en relation gratuite.</span></p>
                 </div>
-                <!-- Sélecteur de Barreau (généré par JS) -->
                 <div class="w-full md:w-auto">
-                    <label class="block text-xs font-bold text-gray-500 mb-1">Filtrer par Barreau / Ville :</label>
-                    <select id="barreauFilter" onchange="filtrerCarteEtListe()" class="p-3 border border-gray-200 rounded-lg bg-white font-semibold shadow-sm focus:ring-2 focus:ring-france-bleu outline-none w-full md:w-72">
-                        <option value="tous">🇫🇷 Toute la France</option>
+                    <label class="block text-xs font-bold text-gray-500 mb-1">Filtrer par Barreau :</label>
+                    <select id="barreauFilter" onchange="filtrerCarteEtListe()" class="p-3 border border-gray-200 rounded-lg bg-white font-semibold shadow-sm focus:ring-2 focus:ring-france-bleu outline-none w-full md:w-64">
+                        <option value="tous">📍 Tout le Finistère</option>
+                        <option value="quimper">⚖️ Barreau de Quimper</option>
+                        <option value="brest">⚖️ Barreau de Brest</option>
                     </select>
                 </div>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Liste Avocats (Avec les descriptions complètes) -->
                 <div id="listeAvocatsBox" class="space-y-6 h-auto lg:max-h-[600px] lg:overflow-y-auto pr-2">
                     
-                    <!-- Avocat 1 : Quimper -->
                     <div class="avocat-item bg-white/95 border border-gray-200 p-6 rounded-xl shadow-md transition-all flex flex-col justify-between" data-barreau="quimper">
                         <div>
                             <div class="flex items-center justify-between gap-4 mb-4">
@@ -184,76 +171,61 @@
                                         <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Quimper</p>
                                     </div>
                                 </div>
-                                <span class="bg-green-100 text-green-800 border border-green-200 text-xs px-2 py-1 rounded font-bold">Avocat Partenaire (29)</span>
                             </div>
-                            <p class="text-sm text-gray-700 mb-4">Intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour) dans le Finistère.</p>
+                            <p class="text-sm text-gray-700 mb-4">Intervenant dans la défense des étrangers (OQTF, Asile, Titres de séjour) dans le Sud-Finistère.</p>
                         </div>
                         <button onclick="ouvrirModaleContact('Maître Buors')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg shadow-sm hover:bg-blue-800">Contacter le cabinet</button>
                     </div>
 
-                    <!-- Avocat 2 : Brest -->
+                    <div class="avocat-item bg-white/95 border border-gray-200 p-6 rounded-xl shadow-md transition-all flex flex-col justify-between" data-barreau="quimper">
+                        <div>
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <div class="flex items-center gap-4">
+                                    <img src="https://ui-avatars.com/api/?name=Maître+Kermarrec&background=000&color=fff&size=150" alt="Maître Kermarrec" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                                    <div>
+                                        <h3 class="font-bold text-lg text-gray-900">Maître Kermarrec</h3>
+                                        <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Quimper</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-700 mb-4">Défense en urgence (CRA, OQTF sans délai) et recours devant la CNDA.</p>
+                        </div>
+                        <button onclick="ouvrirModaleContact('Maître Kermarrec')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg shadow-sm hover:bg-blue-800">Contacter le cabinet</button>
+                    </div>
+
                     <div class="avocat-item bg-white/95 border border-gray-200 p-6 rounded-xl shadow-md transition-all flex flex-col justify-between" data-barreau="brest">
                         <div>
                             <div class="flex items-center justify-between gap-4 mb-4">
                                 <div class="flex items-center gap-4">
-                                    <img src="https://ui-avatars.com/api/?name=Maître+Le+Gall&background=002395&color=fff&size=150" alt="Maître Le Gall" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                                    <img src="https://ui-avatars.com/api/?name=Maître+Le+Gall&background=ED2939&color=fff&size=150" alt="Maître Le Gall" class="w-16 h-16 rounded-full border-2 border-gray-100">
                                     <div>
                                         <h3 class="font-bold text-lg text-gray-900">Maître Le Gall</h3>
                                         <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Brest</p>
                                     </div>
                                 </div>
-                                <span class="bg-green-100 text-green-800 border border-green-200 text-xs px-2 py-1 rounded font-bold">Avocat Partenaire (29)</span>
                             </div>
                             <p class="text-sm text-gray-700 mb-4">Spécialiste des contentieux administratifs et régularisations par le travail.</p>
                         </div>
                         <button onclick="ouvrirModaleContact('Maître Le Gall')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg shadow-sm hover:bg-blue-800">Contacter le cabinet</button>
                     </div>
 
-                    <!-- Avocat 3 : Paris -->
-                    <div class="avocat-item bg-white/95 border border-purple-200 p-6 rounded-xl shadow-md transition-all flex flex-col justify-between border-l-4 border-l-purple-600" data-barreau="paris">
+                    <div class="avocat-item bg-white/95 border border-gray-200 p-6 rounded-xl shadow-md transition-all flex flex-col justify-between" data-barreau="brest">
                         <div>
                             <div class="flex items-center justify-between gap-4 mb-4">
                                 <div class="flex items-center gap-4">
-                                    <img src="https://ui-avatars.com/api/?name=Cabinet+Paris&background=7c3aed&color=fff&size=150" alt="Paris" class="w-16 h-16 rounded-full border-2 border-purple-100">
+                                    <img src="https://ui-avatars.com/api/?name=Maître+Tanguy&background=002395&color=fff&size=150" alt="Maître Tanguy" class="w-16 h-16 rounded-full border-2 border-gray-100">
                                     <div>
-                                        <h3 class="font-bold text-lg text-purple-950">Grands Cabinets Asile</h3>
-                                        <p class="text-sm text-purple-700 font-semibold">📍 Barreau de Paris</p>
+                                        <h3 class="font-bold text-lg text-gray-900">Maître Tanguy</h3>
+                                        <p class="text-sm text-gray-600 font-semibold">📍 Barreau de Brest</p>
                                     </div>
                                 </div>
-                                <span class="bg-purple-100 text-purple-800 border border-purple-200 text-xs px-2 py-1 rounded font-bold">Premium National</span>
                             </div>
-                            <p class="text-sm text-gray-700 mb-4">Experts en recours CNDA (Asile) situés près de la Cour à Montreuil. Consultations possibles à distance (Visio).</p>
+                            <p class="text-sm text-gray-700 mb-4">Accompagnement regroupement familial et visas de long séjour dans le Nord-Finistère.</p>
                         </div>
-                        <button onclick="ouvrirModaleContact('Cabinet Paris')" class="w-full py-3 bg-purple-600 text-white font-bold rounded-lg shadow-sm hover:bg-purple-700">Prendre RDV en Visio</button>
-                    </div>
-
-                    <!-- Avocat 4 : Lyon -->
-                    <div class="avocat-item bg-white/95 border border-purple-200 p-6 rounded-xl shadow-md transition-all flex flex-col justify-between border-l-4 border-l-purple-600" data-barreau="lyon">
-                        <div>
-                            <div class="flex items-center justify-between gap-4 mb-4">
-                                <div class="flex items-center gap-4">
-                                    <img src="https://ui-avatars.com/api/?name=Cabinet+Lyon&background=7c3aed&color=fff&size=150" alt="Lyon" class="w-16 h-16 rounded-full border-2 border-purple-100">
-                                    <div>
-                                        <h3 class="font-bold text-lg text-purple-950">Maître Durand</h3>
-                                        <p class="text-sm text-purple-700 font-semibold">📍 Barreau de Lyon</p>
-                                    </div>
-                                </div>
-                                <span class="bg-purple-100 text-purple-800 border border-purple-200 text-xs px-2 py-1 rounded font-bold">Premium National</span>
-                            </div>
-                            <p class="text-sm text-gray-700 mb-4">Spécialisé dans la contestation des arrêtés préfectoraux et des refus de cartes de séjour de la région Rhône-Alpes.</p>
-                        </div>
-                        <button onclick="ouvrirModaleContact('Maître Durand')" class="w-full py-3 bg-purple-600 text-white font-bold rounded-lg shadow-sm hover:bg-purple-700">Prendre RDV</button>
-                    </div>
-
-                    <!-- Message liste vide -->
-                    <div id="videMessage" class="hidden p-8 text-center text-gray-500 bg-gray-50 rounded-xl border border-dashed border-gray-300">
-                        <div class="text-3xl mb-2">⚖️</div>
-                        <p class="font-bold">Aucun avocat partenaire référencé pour ce barreau.</p>
-                        <p class="text-sm mt-2">Vous êtes avocat ici ? <a href="#" class="text-france-bleu hover:underline">Rejoignez l'annuaire.</a></p>
+                        <button onclick="ouvrirModaleContact('Maître Tanguy')" class="w-full py-3 bg-france-bleu text-white font-bold rounded-lg shadow-sm hover:bg-blue-800">Contacter le cabinet</button>
                     </div>
 
                 </div>
-                <!-- CARTE DE FRANCE -->
                 <div class="bg-white p-2 rounded-xl shadow-lg border border-gray-200 h-[400px] lg:h-[600px] relative">
                     <div id="map" class="w-full h-full rounded-lg z-[1]"></div>
                 </div>
@@ -261,14 +233,12 @@
         </div>
     </section>
 
-    <!-- SECTION ASSOCIATIONS (Restaurée complètement avec adresses) -->
     <section class="py-20 border-t border-gray-200/50 bg-gray-50/80 backdrop-blur-sm">
         <div class="px-6 mx-auto max-w-7xl">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Associations & Aide Gratuite</h2>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Associations & Aide Gratuite dans le Finistère</h2>
             <p class="text-gray-700 text-lg mb-12">Besoin d'une domiciliation, d'aide alimentaire ou d'un premier conseil gratuit ? Contactez les permanences locales.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Asso 1 -->
                 <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col hover:shadow-md transition">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center font-bold text-xl">🤝</div>
@@ -281,7 +251,6 @@
                     </div>
                 </div>
 
-                <!-- Asso 2 -->
                 <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col hover:shadow-md transition">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl">🏠</div>
@@ -294,7 +263,6 @@
                     </div>
                 </div>
 
-                <!-- Asso 3 -->
                 <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col hover:shadow-md transition">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center font-bold text-xl">⚖️</div>
@@ -310,19 +278,17 @@
         </div>
     </section>
 
-    <!-- SECTION ACTUALITÉS (Restaurée complètement avec descriptions et liens) -->
     <section id="actualites" class="py-20 border-t border-gray-200/50 bg-white/40 backdrop-blur-sm">
         <div class="px-6 mx-auto max-w-7xl">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
                 <div>
                     <h2 class="text-3xl font-bold text-france-bleu mb-4">Actualités Juridiques</h2>
-                    <p class="text-gray-700 text-lg">Restez informé des dernières évolutions du droit des étrangers en France.</p>
+                    <p class="text-gray-700 text-lg">Restez informé des dernières évolutions du droit des étrangers en France et en Bretagne.</p>
                 </div>
                 <a href="#" class="hidden md:block text-france-bleu font-bold hover:underline mb-1">Voir tous les articles →</a>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Article 1 -->
                 <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
                     <div class="h-48 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800" alt="Loi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -332,12 +298,11 @@
                             <span class="bg-blue-50 text-france-bleu text-xs font-bold px-2 py-1 rounded border border-blue-100">Préfecture</span>
                         </div>
                         <h3 class="text-xl font-bold mb-3 text-gray-900 leading-tight">Généralisation des démarches en ligne (ANEF)</h3>
-                        <p class="text-gray-600 mb-6 text-sm flex-grow">La préfecture annonce la bascule définitive des demandes de titres de séjour "vie privée et familiale" sur la plateforme numérique nationale ANEF.</p>
+                        <p class="text-gray-600 mb-6 text-sm flex-grow">La préfecture du Finistère annonce la bascule définitive des demandes de titres de séjour "vie privée et familiale" sur la plateforme numérique nationale ANEF.</p>
                         <span class="text-france-bleu font-semibold text-sm flex items-center hover:underline mt-auto">Lire l'article →</span>
                     </div>
                 </div>
 
-                <!-- Article 2 -->
                 <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
                     <div class="h-48 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&q=80&w=800" alt="Tribunal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -352,7 +317,6 @@
                     </div>
                 </div>
 
-                <!-- Article 3 -->
                 <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all group flex flex-col cursor-pointer">
                     <div class="h-48 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" alt="Travail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -362,7 +326,7 @@
                             <span class="bg-green-50 text-green-700 text-xs font-bold px-2 py-1 rounded border border-green-200">Travail</span>
                         </div>
                         <h3 class="text-xl font-bold mb-3 text-gray-900 leading-tight">Régularisation : liste des métiers en tension</h3>
-                        <p class="text-gray-600 mb-6 text-sm flex-grow">Mise à jour de la liste régionale des "métiers en tension", ouvrant de nouvelles opportunités d'admission exceptionnelle au séjour par le travail.</p>
+                        <p class="text-gray-600 mb-6 text-sm flex-grow">Mise à jour de la liste régionale des "métiers en tension" en Bretagne, ouvrant de nouvelles opportunités d'admission exceptionnelle au séjour par le travail.</p>
                         <span class="text-france-bleu font-semibold text-sm flex items-center hover:underline mt-auto">Lire l'article →</span>
                     </div>
                 </div>
@@ -370,11 +334,10 @@
         </div>
     </section>
 
-    <!-- MODALE GÉNÉRATEUR PDF (Restaurée complètement) -->
     <div id="pdfModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-[100] p-4">
         <div class="bg-white rounded-2xl w-full max-w-2xl p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="fermerModale('pdfModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 font-bold text-3xl">&times;</button>
-            <h3 class="text-2xl font-bold text-france-bleu mb-2">Créer ma lettre au Préfet</h3>
+            <h3 class="text-2xl font-bold text-france-bleu mb-2">Créer ma lettre au Préfet du Finistère</h3>
             <p class="text-gray-600 text-sm mb-6 bg-blue-50 p-3 rounded-lg border border-blue-100">Cochez vos arguments et expliquez votre situation. L'outil mettra en forme une lettre officielle PDF prête à envoyer.</p>
             
             <div class="space-y-5">
@@ -405,7 +368,7 @@
 
                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <label class="block text-sm font-bold text-gray-900 mb-2">2. Racontez votre situation avec vos propres mots :</label>
-                    <textarea id="pdfCustomText" rows="4" placeholder="Ex: je travaille en france depuis 4 ans dans la restauration..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-france-bleu focus:outline-none"></textarea>
+                    <textarea id="pdfCustomText" rows="4" placeholder="Ex: je travaille dans la restauration à Quimper depuis 4 ans..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-france-bleu focus:outline-none"></textarea>
                     <button onclick="corrigerTexteIA()" id="btnIA" class="mt-3 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-lg text-sm flex items-center gap-2 hover:opacity-90 shadow-sm transition-all">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         ✨ Corriger les fautes (IA)
@@ -420,12 +383,11 @@
         </div>
     </div>
 
-    <!-- Modale Contact Avocat -->
     <div id="contactModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-[100] p-4">
         <div class="bg-white rounded-2xl w-full max-w-lg p-8 relative shadow-2xl">
             <button onclick="fermerModale('contactModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 font-bold text-2xl">&times;</button>
             <h3 class="text-2xl font-bold text-france-bleu mb-2">Contacter <span id="nomAvocat"></span></h3>
-            <p class="text-gray-600 text-sm mb-4">Laissez vos coordonnées, le cabinet vous rappellera.</p>
+            <p class="text-gray-600 text-sm mb-4">Laissez vos coordonnées, le cabinet vous rappellera rapidement.</p>
             <input type="tel" id="userPhone" placeholder="Votre numéro de téléphone" class="w-full p-3 border border-gray-300 rounded-lg mb-4 shadow-sm focus:ring-2 focus:ring-france-bleu outline-none">
             <select id="userProblem" class="w-full p-3 border border-gray-300 rounded-lg mb-4 shadow-sm focus:ring-2 focus:ring-france-bleu outline-none">
                 <option>OQTF reçue récemment</option>
@@ -437,7 +399,6 @@
         </div>
     </div>
 
-    <!-- CHATBOT IA (Restauré complètement) -->
     <div id="chatbotContainer" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         <div id="chatWindow" class="hidden w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 mb-4 overflow-hidden flex flex-col h-[400px]">
             <div class="bg-france-bleu p-4 flex justify-between items-center text-white">
@@ -452,7 +413,7 @@
             </div>
             <div id="chatMessages" class="flex-grow p-4 bg-gray-50 overflow-y-auto space-y-4 text-sm">
                 <div class="bg-white p-3 rounded-lg rounded-tl-none border border-gray-100 shadow-sm text-gray-800">
-                    Bonjour ! Posez votre question sur l'Asile, les OQTF ou les démarches en préfecture.
+                    Bonjour ! Posez votre question sur l'Asile, les OQTF ou les démarches en préfecture dans le Finistère.
                 </div>
             </div>
             <div class="p-3 bg-white border-t border-gray-100 flex gap-2">
@@ -467,78 +428,52 @@
         </button>
     </div>
 
-    <!-- TOUS LES SCRIPTS -->
     <script>
-        // 1. BASE DE DONNÉES DES BARREAUX (Format compact pour sauver de la place sans rien effacer)
-        const listeBarreaux = [
-            { id: "quimper", nom: "Quimper (Finistère)", lat: 47.9975, lng: -4.0978, type: "gratuit" }, { id: "brest", nom: "Brest (Finistère)", lat: 48.3903, lng: -4.4860, type: "gratuit" },
-            { id: "paris", nom: "Paris", lat: 48.8566, lng: 2.3522, type: "premium" }, { id: "marseille", nom: "Marseille", lat: 43.2965, lng: 5.3698, type: "premium" },
-            { id: "lyon", nom: "Lyon", lat: 45.7640, lng: 4.8357, type: "premium" }, { id: "toulouse", nom: "Toulouse", lat: 43.6047, lng: 1.4442, type: "premium" },
-            { id: "bordeaux", nom: "Bordeaux", lat: 44.8378, lng: -0.5792, type: "premium" }, { id: "lille", nom: "Lille", lat: 50.6292, lng: 3.0573, type: "premium" },
-            { id: "strasbourg", nom: "Strasbourg", lat: 48.5734, lng: 7.7521, type: "premium" }, { id: "nantes", nom: "Nantes", lat: 47.2184, lng: -1.5536, type: "premium" },
-            { id: "rennes", nom: "Rennes", lat: 48.1173, lng: -1.6778, type: "premium" }, { id: "nice", nom: "Nice", lat: 43.7102, lng: 7.2620, type: "premium" },
-            { id: "montpellier", nom: "Montpellier", lat: 43.6108, lng: 3.8767, type: "premium" }, { id: "toulon", nom: "Toulon", lat: 43.1242, lng: 5.9280, type: "premium" },
-            { id: "grenoble", nom: "Grenoble", lat: 45.1885, lng: 5.7245, type: "premium" }, { id: "dijon", nom: "Dijon", lat: 47.3220, lng: 5.0415, type: "premium" },
-            { id: "angers", nom: "Angers", lat: 47.4784, lng: -0.5532, type: "premium" }, { id: "nimes", nom: "Nîmes", lat: 43.8367, lng: 4.3601, type: "premium" },
-            { id: "clermont", nom: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870, type: "premium" }, { id: "aix", nom: "Aix-en-Provence", lat: 43.5297, lng: 5.4474, type: "premium" },
-            { id: "tours", nom: "Tours", lat: 47.3941, lng: 0.6848, type: "premium" }, { id: "amiens", nom: "Amiens", lat: 49.8941, lng: 2.2957, type: "premium" },
-            { id: "limoges", nom: "Limoges", lat: 45.8336, lng: 1.2611, type: "premium" }, { id: "annecy", nom: "Annecy", lat: 45.8992, lng: 6.1294, type: "premium" },
-            { id: "perpignan", nom: "Perpignan", lat: 42.6986, lng: 2.8956, type: "premium" }, { id: "metz", nom: "Metz", lat: 49.1193, lng: 6.1757, type: "premium" },
-            { id: "besancon", nom: "Besançon", lat: 47.2378, lng: 6.0241, type: "premium" }, { id: "orleans", nom: "Orléans", lat: 47.9029, lng: 1.9093, type: "premium" },
-            { id: "rouen", nom: "Rouen", lat: 49.4432, lng: 1.0999, type: "premium" }, { id: "caen", nom: "Caen", lat: 49.1828, lng: -0.3706, type: "premium" },
-            { id: "poitiers", nom: "Poitiers", lat: 46.5802, lng: 0.3404, type: "premium" }, { id: "pau", nom: "Pau", lat: 43.2951, lng: -0.3708, type: "premium" },
-            { id: "bastia", nom: "Bastia", lat: 42.7028, lng: 9.4500, type: "premium" }, { id: "ajaccio", nom: "Ajaccio", lat: 41.9267, lng: 8.7369, type: "premium" }
+        // 1. DONNÉES AVOCATS FINISTÈRE ET LEAFLET
+        const avocatsFinistere = [
+            { id: "buors", nom: "Maître Buors", barreau: "quimper", lat: 47.9975, lng: -4.0978 },
+            { id: "kermarrec", nom: "Maître Kermarrec", barreau: "quimper", lat: 47.9920, lng: -4.1050 },
+            { id: "legall", nom: "Maître Le Gall", barreau: "brest", lat: 48.3903, lng: -4.4860 },
+            { id: "tanguy", nom: "Maître Tanguy", barreau: "brest", lat: 48.3950, lng: -4.4900 }
         ];
 
         var mapInstance;
         var markersGroup = [];
 
-        // INITIALISATION CARTE
+        // INITIALISATION CARTE CENTRÉE SUR LE FINISTÈRE
         document.addEventListener('DOMContentLoaded', function() {
-            mapInstance = L.map('map').setView([46.603354, 1.888334], 5.5);
+            mapInstance = L.map('map').setView([48.1903, -4.1860], 8);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapInstance);
             
-            const selectElement = document.getElementById('barreauFilter');
-
-            listeBarreaux.sort((a, b) => a.nom.localeCompare(b.nom)).forEach(barreau => {
-                let prefixe = barreau.type === "gratuit" ? "📍 [GRATUIT] " : "⚖️ ";
-                let option = document.createElement("option");
-                option.value = barreau.id;
-                option.text = prefixe + barreau.nom;
-                selectElement.appendChild(option);
-
-                var marker = L.marker([barreau.lat, barreau.lng]).addTo(mapInstance)
-                              .bindPopup(`<b>Barreau de ${barreau.nom}</b><br><a href='#avocats' onclick="document.getElementById('barreauFilter').value='${barreau.id}'; filtrerCarteEtListe();" class='text-blue-600 underline'>Voir avocats</a>`);
-                markersGroup.push({ marker: marker, id: barreau.id, lat: barreau.lat, lng: barreau.lng });
+            avocatsFinistere.forEach(avocat => {
+                var marker = L.marker([avocat.lat, avocat.lng]).addTo(mapInstance)
+                              .bindPopup(`<b>${avocat.nom}</b><br>Barreau de ${avocat.barreau.charAt(0).toUpperCase() + avocat.barreau.slice(1)}`);
+                markersGroup.push({ marker: marker, id: avocat.id, barreau: avocat.barreau, lat: avocat.lat, lng: avocat.lng });
             });
+            
             setTimeout(function(){ mapInstance.invalidateSize(); }, 500);
         });
 
-        // FILTRE CARTE
+        // FILTRE CARTE LOCAL
         function filtrerCarteEtListe() {
             const filtre = document.getElementById('barreauFilter').value;
             const items = document.querySelectorAll('.avocat-item');
-            const msgVide = document.getElementById('videMessage');
-            let trouves = 0;
 
             items.forEach(item => {
                 if (filtre === 'tous' || item.getAttribute('data-barreau') === filtre) {
-                    item.classList.remove('hidden'); trouves++;
-                } else { item.classList.add('hidden'); }
+                    item.classList.remove('hidden');
+                } else { 
+                    item.classList.add('hidden'); 
+                }
             });
 
-            if(trouves === 0 && filtre !== 'tous') msgVide.classList.remove('hidden'); 
-            else msgVide.classList.add('hidden');
-
             if (filtre === 'tous') {
-                mapInstance.setView([46.603354, 1.888334], 5.5);
+                mapInstance.setView([48.1903, -4.1860], 8);
                 mapInstance.closePopup();
-            } else {
-                const cible = markersGroup.find(m => m.id === filtre);
-                if (cible) {
-                    mapInstance.setView([cible.lat, cible.lng], 10);
-                    cible.marker.openPopup();
-                }
+            } else if (filtre === 'quimper') {
+                mapInstance.setView([47.9975, -4.0978], 12);
+            } else if (filtre === 'brest') {
+                mapInstance.setView([48.3903, -4.4860], 12);
             }
         }
 
@@ -550,7 +485,7 @@
             toggleLangMenu();
         }
 
-        // MODALES (Contact & PDF)
+        // MODALES
         function fermerModale(id) { 
             document.getElementById(id).classList.add('hidden'); 
             document.getElementById(id).classList.remove('flex'); 
@@ -574,7 +509,7 @@
             messages.innerHTML += `<div class="bg-france-bleu text-white p-3 rounded-lg rounded-tr-none self-end ml-8 shadow-sm text-sm">${input.value}</div>`;
             input.value = "";
             setTimeout(() => {
-                messages.innerHTML += `<div class="bg-white p-3 rounded-lg rounded-tl-none border border-gray-100 mt-4 mr-8 shadow-sm text-sm text-gray-800">Je suis un assistant virtuel de démonstration. Pour trouver un avocat compétent dans votre barreau, merci d'utiliser notre filtre de recherche cartographique.</div>`;
+                messages.innerHTML += `<div class="bg-white p-3 rounded-lg rounded-tl-none border border-gray-100 mt-4 mr-8 shadow-sm text-sm text-gray-800">Je suis un assistant de démonstration. Pour trouver un avocat compétent dans le Finistère, merci d'utiliser notre annuaire et la carte ci-dessus.</div>`;
                 messages.scrollTop = messages.scrollHeight;
             }, 1000);
         }
@@ -616,6 +551,7 @@
                 texte = texte.charAt(0).toUpperCase() + texte.slice(1);
                 texte = texte.replace(/france/gi, "France");
                 texte = texte.replace(/prefet/gi, "Préfet");
+                texte = texte.replace(/finistere/gi, "Finistère");
                 if(!texte.endsWith(".")) texte += ".";
                 
                 textarea.value = texte;
@@ -626,7 +562,7 @@
             }, 1800);
         }
 
-        // GÉNÉRATEUR PDF - CRÉATION DOCUMENT
+        // GÉNÉRATEUR PDF - CRÉATION DOCUMENT LOCAL (Finistère)
         function genererPDF() {
             const prenom = document.getElementById('pdfPrenom').value || "..................";
             const nom = document.getElementById('pdfNom').value.toUpperCase() || "..................";
@@ -647,27 +583,29 @@
             doc.text(`${prenom} ${nom}`, 20, 30);
             doc.text(`N° Étranger (AGDREF) : ${agdref}`, 20, 37);
             
-            // En-tête Destinataire
+            // En-tête Destinataire (Préfecture du Finistère)
             doc.setFont("helvetica", "bold");
-            doc.text("À Monsieur le Préfet", 120, 50);
+            doc.text("À Monsieur le Préfet du Finistère", 120, 50);
             doc.setFont("helvetica", "normal");
-            doc.text("Secrétariat Général de la Préfecture", 120, 56);
-            doc.text("Service de l'Immigration et de l'Intégration", 120, 62);
+            doc.text("Direction de la Citoyenneté et de la Légalité", 120, 56);
+            doc.text("Bureau de l'admission au séjour", 120, 62);
+            doc.text("42 Boulevard Dupleix", 120, 68);
+            doc.text("29320 QUIMPER CEDEX", 120, 74);
             
             // Date
-            doc.text(`Fait le ${new Date().toLocaleDateString('fr-FR')}`, 120, 75);
+            doc.text(`Fait le ${new Date().toLocaleDateString('fr-FR')}`, 120, 88);
             
             // Objet
             doc.setFont("helvetica", "bold");
-            doc.text(`Objet : Recours gracieux formalisé contre l'arrêté de refus de séjour du ${dateRefus}.`, 20, 95);
+            doc.text(`Objet : Recours gracieux formalisé contre l'arrêté de refus de séjour du ${dateRefus}.`, 20, 105);
             
             // Introduction
             doc.setFont("helvetica", "normal");
             let intro = `Monsieur le Préfet,\n\nPar la présente, je conteste respectueusement la décision de vos services portant refus de délivrance d'un titre de séjour en date du ${dateRefus}. Je sollicite un réexamen gracieux de ma situation au vu des éléments suivants :`;
             let introSplit = doc.splitTextToSize(intro, 170);
-            doc.text(introSplit, 20, 110);
+            doc.text(introSplit, 20, 120);
             
-            let y = 110 + (introSplit.length * 6) + 5;
+            let y = 120 + (introSplit.length * 6) + 5;
             
             // Cases cochées
             if(arrayArgs.length > 0) {
@@ -695,7 +633,7 @@
             doc.text("Signature :", 140, y + 25);
             
             // Téléchargement
-            doc.save(`Recours_National_${nom}.pdf`);
+            doc.save(`Recours_Finistere_${nom}.pdf`);
             fermerModale('pdfModal');
         }
     </script>
